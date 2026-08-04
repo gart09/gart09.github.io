@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오 | 개발자</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">LimJinWoo's Portfolio</h1>
+            <nav class="nav">
+                <a href="#about">소개</a>
+                <a href="#resume">이력</a>
+                <a href="#projects">프로젝트</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- 프로필 사진 및 자기소개 섹션 -->
+        <section id="about" class="section profile-section">
+            <div class="profile-photo-wrapper">
+                <img src="assets/images/임진우_사진.jpg" alt="내 사진" class="profile-photo">
+            </div>
+
+            <div class="profile-info">
+                <h2 class="greeting">안녕하세요,<br><strong>개발자 임진우</strong>입니다.</h2>
+                <p class="description">
+                    단순한 기능 구현이 아닌, <br> 안정성과 최적화를 신경쓰는 깔끔한 개발자를 지향하고 있습니다.<br>
+                    함께 일하고 싶은, 신뢰할 수 있는 개발자가 되겠습니다.
+                </p>
+
+                <div class="contact-info">
+                    <a href="mailto:gart09@naver.com" class="contact-badge">📧 gart09@naver.com</a>
+                    <a href="https://github.com/gart09" target="_blank" class="contact-badge">💻 github.com/gart09</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 이력 및 경력 섹션 -->
+        <section id="resume" class="section resume-section">
+            <h2 class="section-title">이력</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2010.03 - 2013.02</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">백석고등학교 졸업</h3>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2014.03 - 2015.05</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">서울시립대학교 컴퓨터과학부 입학 및 자퇴</h3>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2015.05 - 2020.05</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">중국 리그오브레전드 프로게이머</h3>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2021.01 - 2022.07</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">군입대 및 육군 만기 전역</h3>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022.09 - 2026.08</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">서울시립대 컴퓨터과학부 재입학 및 졸업</h3>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 60px;">경력</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2024.08 - 2026.01</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">서울시립대학교 산학협력단 검수전담 직원</h3>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2026.01 - 2026.02</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">펄어비스 검은사막팀 프로그래밍 인턴</h3>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2026.04 - 2026.10</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">유플러스 유레카 부트캠프</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 포트폴리오(프로젝트) 섹션 -->
+        <section id="projects" class="section projects-section">
+            <h2 class="section-title">프로젝트 소개</h2>
+
+            <div class="projects-grid">
+                <!-- 프로젝트 카드 1 -->
+                <article class="project-card">
+
+
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">나랑노랑 (NarangNorang)</h3>
+                            <span class="project-period">2026.07.17 - 2026.07.27</span>
+                        </div>
+
+                        <div class="project-tech-stack">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">JPA</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+
+                        <div class="project-image-wrapper">
+                            <!-- 프로젝트 사진 경로로 변경해주세요 -->
+                            <img src="assets/images/룸_사진.png" alt="프로젝트 사진 1" class="project-image">
+                            <img src="assets/images/스페이스_초대사진.png" alt="프로젝트 사진 2" class="project-image">
+                        </div>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <h4>프로젝트 목표</h4>
+                                <ul>
+                                    <li>공통된 관심사를 바탕으로 팀빌딩 및 소통을 할 수 있는 커뮤니티 플랫폼 개발</li>
+                                </ul>
+                            </div>
+
+                            <div class="detail-item">
+                                <h4>개인적 목표</h4>
+                                <ul>
+                                    <li>부트캠프를 진행하며 배운 Spring Boot 기술(Spring Security, Jwt, Jpa 등) 적용</li>
+                                    <li>배포 및 실제 서비스를 진행하며 유저 반응 및 성능 테스트 진행</li>
+                                </ul>
+                            </div>
+
+                            <div class="detail-item">
+                                <h4>프로젝트 기획 의도</h4>
+                                <ul>
+                                    <li>부트캠프를 진행하며 팀빌딩이 랜덤으로 이루어져 팀원들의 특징을 알기 어려웠음</li>
+                                    <li>수강생들의 특징을 미리 알고 팀 빌딩을 할 수 있으면 어떨까?란 아이디어로 출발</li>
+                                    <li>좀 더 확장해서 동아리, 회사 레크레이션, 부트캠프, 동호회 등 팀빌딩을 원하는 어느곳에서든 사용할 수 있는 범용적인 플랫폼 구상
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="detail-item">
+                                <h4>다른 서비스와의 차별점</h4>
+                                <ul>
+                                    <li>같은 관심사 커뮤니티에서의 팀빌딩에 핵심을 둔 플랫폼</li>
+                                    <li>룸(방 개념)에 참여한 유저들은 룸마다 다른 형식의 프로필카드로 본인의 특징을 보여줌</li>
+                                    <li>개발자 커뮤니티라면 프로필 카드에 본인의 기술스택 및 연차를, 요리 커뮤니티라면 프로필 카드에 좋아하는 요리 및 자격증 유무 등과 같이
+                                        커뮤니티에 맞게 본인을 설명할 수 있음
+                                    </li>
+                                </ul>
+                            </div>
+
+
+
+                            <div class="detail-item">
+                                <h4>내가 기여한 부분</h4>
+                                <ul>
+                                    <li>룸 내에서 유저들의 특징을 표현할 MemberProfileCard CRUD 작업</li>
+                                    <li>JPA 및 Querydsl를 이용해 MemberProfileCard 필터링 기능 구현</li>
+                                    <li>WebSocket과 STOMP를 이용한 룸 및 스페이스(룸 내의 소모임 개념) 채팅 구현</li>
+                                </ul>
+                            </div>
+
+                            <div class="detail-item retrospective-section">
+                                <h4>프로젝트 종료 후 아쉬웠던 점</h4>
+
+                                <h5 class="retro-category">협업 관련 이슈</h5>
+                                <div class="retro-card">
+                                    <div class="retro-problem">
+                                        <strong>[문제] 검증 없는 코드 리뷰로 인한 개발 병목</strong>
+                                        <ul>
+                                            <li>코드 리뷰 시 눈대중으로 확인하고 승인하여 코드 간 통합 과정에서 다수의 오류 발생</li>
+                                            <li>오류 수정 작업으로 상당한 시간 소요, MVP 수준을 넘어가는 추가 기능 구현 기회를 놓침</li>
+                                        </ul>
+                                    </div>
+                                    <div class="retro-solution">
+                                        <strong>[개선책]</strong>
+                                        <ul>
+                                            <li>PR 템플릿을 상세화하여 변경사항을 명확하게 작성하게 하고, 리뷰어가 집중적으로 테스트해야 할 포인트를 명시하도록 강제</li>
+                                            <li>작성자가 직접 동작을 확인하였다는 시연 스크린샷 혹은 동영상을 필수 첨부하도록 하여 머지 전 최소한의 QA를 실행하도록 강제
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="retro-card">
+                                    <div class="retro-problem">
+                                        <strong>[문제] 불명확한 Git 히스토리 및 커밋 작성</strong>
+                                        <ul>
+                                            <li>규칙을 정했으나 대소문자 혼용, 작성 양식 등 팀원별 스타일이 달라 히스토리 가독성이 떨어짐</li>
+                                            <li>개발 중반 이후에야 Squash Merge를 도입해 이전에 사소한 커밋 기록이 과다하게 남음</li>
+                                            <li>깃 허브 커밋 목록이 통일화되지 못했었음</li>
+                                        </ul>
+                                    </div>
+                                    <div class="retro-solution">
+                                        <strong>[개선책]</strong>
+                                        <ul>
+                                            <li>Git Hook을 사용하여 커밋 생성 시 메시지 컨벤션을 자동 검증, 양식을 통일</li>
+                                            <li>프로젝트 최초 설정 시 레포지토리 설정에서 Squash Merge만 허용하여 깔끔한 커밋 히스토리를 남기도록 강제</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <h5 class="retro-category">아키텍처 및 기술 이슈</h5>
+
+                                <div class="retro-card">
+                                    <div class="retro-problem">
+                                        <strong>[문제] Entity 간의 연관 관계 및 결합도가 최적으로 설계되지 않음</strong>
+                                        <ul>
+                                            <li>최초 기획 때 Entity간의 관계를 명확하게 설정하지 않아, 코드를 작성하며 계속해서 Entity의 구조 및 연관관계가 변경됨
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="retro-solution">
+                                        <strong>[개선책]</strong>
+                                        <ul>
+                                            <li>최초 기획 때 연관관계를 확실하게 정하기</li>
+                                            <li>느슨한 결합을 위한 ID참조, 중간 매개 객체를 두어 서로의 코드의 영역을 침범하지 않도록 하기 등 어떻게 구현할 것인지 사전에
+                                                협의 후 작성
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="retro-card">
+                                    <div class="retro-problem">
+                                        <strong>[문제] 유저 트래픽 기반 최적화를 경험하지 못함</strong>
+                                        <ul>
+                                            <li>시간 부족으로 MVP 개발에만 집중해, 실제 배포를 진행하지 못함</li>
+                                            <li>따라서 실제 사용자 유입에 따른 쿼리 병목을 직접 측정/최적화를 진행하지 못함</li>
+                                        </ul>
+                                    </div>
+                                    <div class="retro-solution">
+                                        <strong>[해결방안]</strong>
+                                        <ul>
+                                            <li>프로젝트 사후 AWS EC2와 RDS를 사용하여 직접 배포</li>
+                                            <li>배포 후 크롬 브라우저에 탑재된 LightHouse를 사용해 프로젝트의 성능을 점수로 측정 및 개선 사항 정리, 다음 프로젝트
+                                                진행 시 개선사항 적용</li>
+                                            <li>JMeter를 사용해 부하 테스트 진행. 실제 병목이 발생하는 부분의 문제 파악 및 해결방안 고안하는 연습을 진행</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 추가 프로젝트는 위 <article> 태그를 복사하여 추가할 수 있습니다. -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 [이름]. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 이미지 모달 -->
+    <div id="image-modal" class="image-modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
