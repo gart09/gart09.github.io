@@ -182,7 +182,7 @@
                             </div>
 
                             <div class="detail-item retrospective-section">
-                                <h4>프로젝트 종료 후 아쉬웠던 점</h4>
+                                <h4>프로젝트 종료 후 고찰</h4>
 
                                 <h5 class="retro-category">협업 관련 이슈</h5>
                                 <div class="retro-card">
@@ -244,19 +244,34 @@
 
                                 <div class="retro-card">
                                     <div class="retro-problem">
-                                        <strong>[문제] 유저 트래픽 기반 최적화를 경험하지 못함</strong>
+                                        <strong>[문제] 성능 이슈의 실제 영향도를 검증하지 못함</strong>
                                         <ul>
-                                            <li>시간 부족으로 MVP 개발에만 집중해, 실제 배포를 진행하지 못함</li>
-                                            <li>따라서 실제 사용자 유입에 따른 쿼리 병목을 직접 측정/최적화를 진행하지 못함</li>
+                                            <li>코드 리뷰 중 N+1과 같은 잠재적 성능 이슈를 발견하더라도, 실사용 트래픽 규모에서 이것이 실제로 얼마나 성능에 영향을 주는지
+                                                정량적으로 검증할 방법이 없었음</li>
                                         </ul>
                                     </div>
                                     <div class="retro-solution">
                                         <strong>[해결방안]</strong>
                                         <ul>
-                                            <li>프로젝트 사후 AWS EC2와 RDS를 사용하여 직접 배포</li>
-                                            <li>배포 후 크롬 브라우저에 탑재된 LightHouse를 사용해 프로젝트의 성능을 점수로 측정 및 개선 사항 정리, 다음 프로젝트
-                                                진행 시 개선사항 적용</li>
-                                            <li>JMeter를 사용해 부하 테스트 진행. 실제 병목이 발생하는 부분의 문제 파악 및 해결방안 고안하는 연습을 진행</li>
+                                            <li>방 목록 조회 API에서 N+1 쿼리 패턴을 발견(유저가 속한 방 목록을 조회한 뒤, 방마다 인원수를 세는 쿼리를 추가로 보냄)
+                                            </li>
+                                            <img src="assets/images/roomsList_이전로직.png" alt="roomsList 이전 로직"
+                                                class="project-image"
+                                                style="margin: 10px 0; max-width: 100%; border-radius: 8px; display: block;">
+                                            <li>JMeter로 실사용 트래픽을 재현하는 부하테스트를 진행해, N+1 쿼리가 실제 응답속도에 미치는 영향을 정량적으로 확인</li>
+                                            <li>GroupBy로 방 목록 조회 및 인원수 조회를 한번에 처리하도록 쿼리를 통합</li>
+                                            <img src="assets/images/roomsList_개선후쿼리.png" alt="roomsList 개선 후 쿼리"
+                                                class="project-image"
+                                                style="margin: 10px 0; max-width: 100%; border-radius: 8px; display: block;">
+                                            <li>JMeter를 사용, 150명의 동시 유저가 다음 시나리오를 수행</li>
+                                            <li>시나리오: 회원가입 → 로그인 → 방 생성 20개 + 참여 → 방 목록 조회 10회 반복</li>
+                                            <li>결과</li>
+                                            <img src="assets/images/roomsList_N+1_통계사진.png" alt="전후 비교 통계"
+                                                class="project-image"
+                                                style="margin: 10px 0; max-width: 100%; border-radius: 8px; display: block;">
+                                            <li>평균 응답시간은 58% 단축, 중앙값은 80% 단축됨</li>
+                                            <li>비즈니스 로직, 쿼리 작성이 서비스의 품질에 끼치는 영향을 실측 결과로 확인</li>
+                                            <li>이후 프로젝트에서 쿼리 작성 시 해당 쿼리 성능 개선 여부를 항상 확인할 것</li>
                                         </ul>
                                     </div>
                                 </div>
