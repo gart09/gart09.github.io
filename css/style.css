@@ -45,7 +45,7 @@ a:hover {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1040px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -140,6 +140,7 @@ a:hover {
     font-size: 1.05rem;
     color: var(--text-muted);
     margin-bottom: 24px;
+    max-width: 640px;
 }
 
 .contact-info {
@@ -175,6 +176,12 @@ a:hover {
 /* ==========================================================================
    Resume Section
    ========================================================================== */
+.resume-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
 .timeline {
     position: relative;
 }
@@ -305,6 +312,22 @@ a:hover {
     box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* optional slight shadow for better separation */
 }
 
+.project-image-placeholder {
+    flex: 1 1 250px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px;
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
 .project-content {
     padding: 30px;
 }
@@ -389,6 +412,17 @@ a:hover {
 /* ==========================================================================
    Responsive
    ========================================================================== */
+@media (max-width: 900px) {
+    .resume-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .resume-column + .resume-column {
+        margin-top: 60px;
+    }
+}
+
 @media (max-width: 600px) {
     .profile-section {
         flex-direction: column;
