@@ -312,21 +312,6 @@ a:hover {
     box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* optional slight shadow for better separation */
 }
 
-.project-image-placeholder {
-    flex: 1 1 250px;
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 12px;
-    border: 1px dashed var(--border-color);
-    border-radius: 8px;
-    background-color: var(--card-bg);
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    line-height: 1.5;
-}
 
 .project-content {
     padding: 30px;
@@ -395,6 +380,48 @@ a:hover {
 
 .detail-item ul li {
     margin-bottom: 4px;
+}
+
+.detail-subtitle {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 20px 0 10px;
+    color: var(--text-main);
+}
+
+.detail-subtitle:first-of-type {
+    margin-top: 0;
+}
+
+.impl-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.impl-card:last-child {
+    margin-bottom: 0;
+}
+
+.impl-card .project-image {
+    display: block;
+    margin-top: 12px;
+}
+
+.impl-diagram {
+    margin-top: 12px;
+    padding: 16px 20px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    white-space: pre;
 }
 
 /* ==========================================================================

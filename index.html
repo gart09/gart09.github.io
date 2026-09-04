@@ -280,7 +280,7 @@
 
                     <div class="project-content">
                         <div class="project-header">
-                            <h3 class="project-title">Ace_BE (선착순 쿠폰 발급 시스템)</h3>
+                            <h3 class="project-title">Ace (선착순 쿠폰 발급 시스템)</h3>
                             <span class="project-period">2026.08.06 - 2026.08.31</span>
                         </div>
 
@@ -289,17 +289,16 @@
                             <span class="tech-tag">Spring Boot</span>
                             <span class="tech-tag">Spring Batch</span>
                             <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Redis Rua/Redis Stream</span>
+                            <span class="tech-tag">Prometheus/Grafana</span>
+                            <span class="tech-tag">Docker Compose</span>
                             <span class="tech-tag">JUnit5</span>
                         </div>
 
                         <div class="project-image-wrapper">
-                            <!-- 사진 추가 예정: 아키텍처 다이어그램 -->
-                            <div class="project-image-placeholder"><span>사진 추가 예정<br>아키텍처 다이어그램</span></div>
-                            <!-- 사진 추가 예정: 정합성 검증 배치 파이프라인 구조 -->
-                            <div class="project-image-placeholder"><span>사진 추가 예정<br>정합성 검증 파이프라인 구조</span></div>
-                            <!-- 사진 추가 예정: 관리자 알림 화면 -->
-                            <div class="project-image-placeholder"><span>사진 추가 예정<br>관리자 알림 화면</span></div>
+                            <img src="assets/images/ace_정합성 리포트 사진1.png" alt="정합성 리포트 사진1" class="project-image">
+                            <img src="assets/images/ace_정합성 리포트 사진2.png" alt="정합성 리포트 사진2" class="project-image">
+                            <img src="assets/images/ace_정합성 리포트 사진3.png" alt="정합성 리포트 사진3" class="project-image">
                         </div>
 
                         <div class="project-details">
@@ -327,13 +326,119 @@
 
 
                             <div class="detail-item">
+                                <h4>프로젝트 아키텍처</h4>
+                                <img src="assets/images/ace_아키텍처.png" alt="Ace 아키텍처 다이어그램" class="project-image">
+                            </div>
+
+
+                            <div class="detail-item">
                                 <h4>내가 기여한 부분</h4>
                                 <ul>
                                     <li>ISSUE/PR 템플릿, gitHook, docker Compose 등 협업 시 필요한 기초 인프라 환경 조성</li>
-                                    <li>정합성 검증 공통 인터페이스 설계 및 재고 정합성 검증 구현</li>
-                                    <li>Spring Batch 기반 DB 전체 데이터 정합성 비동기 검증 파이프라인 구현</li>
-                                    <li>"요청 → 복구 정책 실행 → 이력 저장 → 재검증 → 상태 갱신"으로 이어지는 복구 공통 인터페이스 구현</li>
+                                    <li>정합성 검증 공통 인터페이스 및 API 구현, 재고 정합성 검증 구현</li>
+                                    <li>Spring Batch 기반 DB 전체 데이터 정합성 비동기 검증 파이프라인 및 API 구현</li>
+                                    <li>"요청 → 복구 정책 실행 → 이력 저장 → 재검증 → 상태 갱신"으로 이어지는 복구 공통 인터페이스 및 API 구현</li>
+                                    <li>Prometheus 및 Grafana를 이용한 metric 데이터 시각화</li>
+                                    <li>SSE를 이용한 알림 시스템 구현</li>
                                 </ul>
+                            </div>
+
+                            <div class="detail-item">
+                                <h4>구현 내용</h4>
+
+                                <div class="impl-card">
+                                    <h5 class="detail-subtitle">정합성 검증 공통 인터페이스 / Spring Batch 기반 정합성 비동기 검증 파이프라인</h5>
+                                    <ul>
+                                        <li>3명의 팀원이 정합성 검증 파트를 담당</li>
+                                        <li>정합성 검증을 실행할 공통 로직의 필요성을 느끼고, 정합성 검증을 실행하고자 하는 곳에서 ConsistencyVerificationRunner를 통해 인자만 건네면 쉽게 실행할 수 있도록 구현</li>
+                                        <li>팀원들이 본인이 담당한 검증의 로직 작성에만 신경쓸 수 있는 환경을 조성</li>
+                                        <li>매개변수로 checks, scope, triggerType 3가지 타입을 넘겨받음</li>
+                                            <ul>
+                                                <li>checks</li>
+                                                <ul>
+                                                    <li>실제 검증하고자 하는 정합성 검증 객체</li>
+                                                    <li>어떤 검증이 추가될지 모르기 때문에, List&lt;ConsistencyCheck&gt형식으로 모든 검증을 처리할 수 있도록 구현</li>
+                                                    <li>원하는 코드에서 A, B 두 개의 검증을 실행하고 싶다면, checks.add(A, B)와 같이 직관적으로 작성할 수 있도록 함</li>
+                                                </ul>
+                                                <li>scope</li>
+                                                <ul>
+                                                    <li>검증을 실행할 범위를 결정하는 매개변수</li>
+                                                    <li>EVENT: 특정 couponEvent의 항목들에 대해 검사</li>
+                                                    <li>AS_OF_RANGE: 특정 시간 범위에 대한 항목들에 대해 검사</li>
+                                                    <li>ALL: 모든 데이터에 대해서 검사. Batch 작업으로만 진행할 수 있음</li>
+                                                </ul>
+                                                <li>triggerType</li>
+                                                <ul>
+                                                    <li>어떻게 이 검증이 실행됐는지를 결정하는 매개변수</li>
+                                                    <li>EVENT_TRIGGER: 특정 이벤트 발생 시(쿠폰 사용, 쿠폰 발급 마감 등)</li>
+                                                    <li>SCHEDULED: 스케쥴러의 의한 주기 실행</li>
+                                                    <li>ON_DEMAND: API를 통한 수동 실행</li>
+                                                    <li>RECOVERY_REVERIFICATION: 복구 정책 실행 직후 정상복구됐는지 확인하기 위한 실행</li>
+                                                </ul>
+                                            </ul>
+                                        <li>전체적인 검증 코드의 흐름은 다음과 같다.</li>
+                                    </ul>
+                                    <pre class="impl-diagram">
+[클라이언트]
+    │  API 호출
+    │  스케쥴링 발생
+    │  Event 발생
+    ▼
+scope.getType() 분기
+    │
+    ├── ALL ─────────────────────────────────────────────
+    │     ConsistencyVerificationRunner.runAsync(checks, scope, triggerType) - 비동기 실행
+    │         │
+    │         │  ALL Scope 가 아닐시 error 발생
+    │         │
+    │         ├─ jobFactory.buildJob()     : 검증 1개 = Step 1개씩 동적 조립
+    │         ├─ asyncJobOperator.start()  : Spring Batch Job 비동기 실행
+    │         ├─ JobExecution 즉시 반환     → 202 Accepted, jobExecutionId 응답
+    │         │
+    │         ├─ 각각의 Step은 Chunk 단위로 진행(현재 프로젝트는 coupon_eventId 10개 단위가 하나의 Chunk)
+    │         ├─ Chunk가 끝날 시 CheckResultAccumulatorWriter가 ExecutionContext에 Chunk의 검증 결과를 차곡차곡 누적
+    │         │
+    │         ├─ Step 완료 시 최종 누적된 결과를 VerificationResult로 저장
+    │         ├─ 모든 Step 완료 → Job 완료 → 성공 시 배치 성공 알림 발행
+    │         └─ 실패 시 batch_failure_log 테이블에 오류 저장 및 실패 알림 발행
+    │
+    └── EVENT / AS_OF_RANGE ─────────────────────────────
+          ConsistencyVerificationRunner.run(checks, scope, triggerType) - 동기 실행
+              │
+              ▼
+          checks를 하나씩 순차 실행: runSingleCheck(check, scope, triggerType)
+              │
+              ├─ scope 미지원 → VerificationResult.error()
+              │
+              └─ check.check(scope) 실행 → 검증 결과 내용을 담은 CheckOutcome 반환
+                    │
+                    ├─ pass → VerificationResult.pass()
+                    └─ fail → VerificationResult.fail(diffDetail, violations)
+              │
+              ▼
+          결과 취합 → resultPersister.saveAndNotify() (DB 저장 + SSE 알림)
+                                    </pre>
+                                </div>
+
+                                <div class="impl-card">
+                                    <h5 class="detail-subtitle">복구 공통 흐름</h5>
+                                    <ul>
+                                        <li>"복구 정책 실행 → 이력 저장 → 재검증 → 상태 갱신"으로 이어지는 흐름을 ConsistencyRecoveryDispatcher 하나의 진입점으로 고정해, 관리자 수동 실행과 시스템 자동 트리거가 같은 경로를 타도록 함</li>
+                                        <li>복구가 끝났다고 바로 성공 처리하지 않고, 같은 검사기로 재검증까지 자동으로 돌려 실제로 통과했는지 확인한 뒤에만 복구 완료로 표시</li>
+                                    </ul>
+                                    <!-- 프로젝트 사진 경로로 변경해주세요 -->
+                                    <img src="assets/images/ace_impl_recovery_flow.png" alt="복구 공통 흐름 구조" class="project-image">
+                                </div>
+
+                                <div class="impl-card">
+                                    <h5 class="detail-subtitle">실시간 알림 (SSE)</h5>
+                                    <ul>
+                                        <li>배치 진행률, 발급 실패 등 이벤트를 리스너로 받아 SseEmitterRegistry가 관리자 화면에 브로드캐스트</li>
+                                        <li>단방향 알림이라 WebSocket 대신 SSE를 선택했고, 프록시나 브라우저가 유휴 연결을 끊지 않도록 20초 주기로 하트비트를 전송</li>
+                                    </ul>
+                                    <!-- 프로젝트 사진 경로로 변경해주세요 -->
+                                    <img src="assets/images/ace_impl_sse_notification.png" alt="실시간 알림 SSE 구조" class="project-image">
+                                </div>
                             </div>
 
                             <div class="detail-item retrospective-section">
