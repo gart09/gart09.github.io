@@ -162,7 +162,7 @@
                                         <li>확실한 리뷰 - PR때 작업한 내용을 시각적으로 확인할 수 있는 스크린샷 및 테스트 결과 첨부를 강제</li>
                                         <li>커밋 메시지를 <code>gitHook</code>을 이용해 정한 커밋 컨벤션을 벗어나지 않도록 함</li>
                                     </ul>
-                                    <li>대용량 데이터를 처리하는 경험 습득</li>
+                                    <li>대용량 데이터 처리 경험 습득</li>
                                     <li>작업 생산성 향상을 위한 공통 인프라(도커 컴포즈 등) 구현</li>
                                 </ul>
                             </div>
@@ -201,23 +201,14 @@
                                             <li><code>checks</code></li>
                                             <ul>
                                                 <li>실제 검증하고자 하는 정합성 검증 객체</li>
-                                                <li>어떤 검증이 추가될지 모르기 때문에, <code>List&lt;ConsistencyCheck&gt;</code> 형식으로 모든 검증을 처리할 수 있도록 구현</li>
-                                                <li>원하는 코드에서 A, B 두 개의 검증을 실행하고 싶다면, <code>checks.add(A, B)</code>와 같이 직관적으로 작성할 수 있도록 함</li>
                                             </ul>
                                             <li><code>scope</code></li>
                                             <ul>
                                                 <li>검증을 실행할 범위를 결정하는 매개변수</li>
-                                                <li><code>EVENT</code>: 특정 couponEvent의 항목들에 대해 검사</li>
-                                                <li><code>AS_OF_RANGE</code>: 특정 시간 범위에 대한 항목들에 대해 검사</li>
-                                                <li><code>ALL</code>: 모든 데이터에 대해서 검사. Batch 작업으로만 진행할 수 있음</li>
                                             </ul>
                                             <li><code>triggerType</code></li>
                                             <ul>
                                                 <li>어떻게 이 검증이 실행됐는지를 결정하는 매개변수</li>
-                                                <li><code>EVENT_TRIGGER</code>: 특정 이벤트 발생 시(쿠폰 사용, 쿠폰 발급 마감 등)</li>
-                                                <li><code>SCHEDULED</code>: 스케쥴러의 의한 주기 실행</li>
-                                                <li><code>ON_DEMAND</code>: API를 통한 수동 실행</li>
-                                                <li><code>RECOVERY_REVERIFICATION</code>: 복구 정책 실행 직후 정상복구됐는지 확인하기 위한 실행</li>
                                             </ul>
                                         </ul>
                                         <li>ALL 스코프는 한 번에 수백만 건을 검사해야 해서, 동기 처리 대신 Spring Batch로 비동기 처리하도록 구현</li>
