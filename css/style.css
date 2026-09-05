@@ -410,7 +410,7 @@ a:hover {
     margin-top: 12px;
 }
 
-.impl-card code {
+.project-details code {
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
     font-size: 0.85em;
     padding: 2px 6px;
@@ -611,6 +611,20 @@ a:hover {
     display: block;
     font-weight: 600;
     color: var(--accent-color);
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.retro-learned {
+    padding: 16px 20px;
+    background-color: rgba(56, 161, 105, 0.04); /* soft green */
+    border-top: 1px solid var(--border-color);
+}
+
+.retro-learned strong {
+    display: block;
+    font-weight: 600;
+    color: #38a169; /* soft green */
     margin-bottom: 8px;
     font-size: 0.95rem;
 }
