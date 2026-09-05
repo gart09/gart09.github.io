@@ -221,28 +221,28 @@
                                             </ul>
                                         </ul>
                                         <li>ALL 스코프는 한 번에 수백만 건을 검사해야 해서, 동기 처리 대신 Spring Batch로 비동기 처리하도록 구현</li>
-                                        <li>마찬가지로 <code>&lt;ConsistencyCheck&gt;</code>를 통해 인자만 건네면 쉽게 실행할 수 있도록 함</li>
+                                        <li>마찬가지로 <code>ConsistencyVerificationRunner</code>>를 통해 인자만 건네면 쉽게 실행할 수 있도록 함</li>
                                         <img src="assets/images/ace_runAsync사진.png" alt="runner_runAsync" class="project-image">
                                         <li><code>ConsistencyBatchJobFactory</code>가 요청받은 검증(Check) 1개당 Step 1개씩 동적으로 조립해 Job을 구성</li>
                                         <li>한 Step이 배치 오류로 실패하면 비정상 작동이므로, 그 이후 Step들은 실행되지 않음</li>
-                                        <li>하지만 한 Step 검증이 실패하면 정상 작동이므로, 그 이후 Step들은 실행됨</li>
+                                        <li>하지만 한 Step 검증이 실패하면 정상 작동이므로, 그 이후 Step들은 정상 실행됨</li>
                                         <li>Step 하나는 다음 3가지 요소로 구성</li>
                                         <ul>
                                             <li><code>EventIdPageReader</code></li>
                                             <ul>
                                                 <li>event_id 기준으로 keyset 페이징하며 10개 단위로 읽음</li>
-                                                <li><code>ItemStream</code>을 구현해 마지막으로 읽은 event_id를 저장, Step이 재시작되면 이어서 읽음</li>
+                                                <li><code>ItemStream</code>을 구현해 마지막으로 읽은 event_id를 저장, 비정상적으로 Batch가 종료된 후 Step이 재시작되면 해당 부분부터 이어서 읽음</li>
                                             </ul>
                                             <li><code>ConsistencyCheckItemProcessor</code></li>
                                             <ul>
-                                                <li>Reader가 읽은 페이지(이벤트 10개)를 해당 Step의 검증기 하나로 실행</li>
+                                                <li>Reader가 읽은 페이지(이벤트 10개)로 해당 Step의 검증을 실행</li>
                                                 <li>Chunk 크기는 1로 설정해, 페이지(이벤트 10개) 하나가 처리될 때마다 커밋되도록 함</li>
                                                 <li>실행 도중 오류가 발생했다면, 커밋된 페이지 이후부터 실행하도록 함</li>
                                             </ul>
                                             <li><code>CheckResultAccumulatorWriter</code></li>
                                             <ul>
                                                 <li>페이지별 위반 건을 즉시 저장하고, 위반 건수는 Step이 끝날 때까지 누적</li>
-                                                <li><code>ItemStream</code>을 구현해 누적된 위반 건수도 저장, Step이 재시작돼도 이전 페이지의 집계가 유지됨</li>
+                                                <li><code>ItemStream</code>을 구현해 누적된 위반 건수도 저장, 비정상적으로 Batch가 종료된 후 Step이 재시작돼도 이전 페이지의 집계가 유지됨</li>
                                                 <li>Step이 끝나면 <code>ConsistencyStepCompletionListener</code>가 누적된 결과를 최종 <code>VerificationResult</code>로 확정 저장</li>
                                             </ul>
                                         </ul>
