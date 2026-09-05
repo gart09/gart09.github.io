@@ -312,6 +312,16 @@ a:hover {
     box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* optional slight shadow for better separation */
 }
 
+.img-caption {
+    display: block;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 6px;
+    margin-bottom: 12px;
+}
+
 
 .project-content {
     padding: 30px;
