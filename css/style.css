@@ -45,7 +45,7 @@ a:hover {
 }
 
 .container {
-    max-width: 1040px;
+    max-width: 1550px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -456,6 +456,20 @@ a:hover {
     line-height: 1.5;
     color: var(--text-muted);
     white-space: pre;
+}
+
+.sequence-diagram {
+    margin-top: 12px;
+    padding: 16px 20px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow-x: auto;
+    text-align: center;
+}
+
+.sequence-diagram svg {
+    max-width: none;
 }
 
 /* ==========================================================================
