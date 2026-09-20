@@ -276,7 +276,7 @@
                                             </ul>
                                         </ul>
                                         <li>ALL 스코프는 한 번에 수백만 건을 검사해야 해서, 동기 처리 대신 Spring Batch로 비동기 처리하도록 구현</li>
-                                        <li>마찬가지로 <code>ConsistencyVerificationRunner</code>>를 통해 인자만 건네면 쉽게 실행할 수 있도록 함</li>
+                                        <li>마찬가지로 <code>ConsistencyVerificationRunner</code>를 통해 인자만 건네면 쉽게 실행할 수 있도록 함</li>
                                         <img src="assets/images/ace_runAsync사진.png" alt="runner_runAsync" class="project-image">
                                         <li><code>ConsistencyBatchJobFactory</code>가 요청받은 검증(Check) 1개당 Step 1개씩 동적으로 조립해 Job을 구성</li>
                                         <li>한 Step이 배치 오류로 실패하면 비정상 작동이므로, 그 이후 Step들은 실행되지 않음</li>
