@@ -71,18 +71,6 @@ a:hover {
     letter-spacing: -0.5px;
 }
 
-.nav a {
-    color: var(--text-main);
-    margin-left: 24px;
-    font-weight: 500;
-    font-size: 0.95rem;
-}
-
-.nav a:hover {
-    color: var(--accent-color);
-    text-decoration: none;
-}
-
 /* ==========================================================================
    Sections
    ========================================================================== */
@@ -178,8 +166,8 @@ a:hover {
    ========================================================================== */
 .resume-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px;
 }
 
 .timeline {
@@ -221,6 +209,29 @@ a:hover {
 .timeline-desc {
     font-size: 0.95rem;
     color: var(--text-muted);
+}
+
+.career-sublist {
+    display: grid;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.career-sublist li {
+    display: grid;
+    grid-template-columns: 145px 1fr;
+    gap: 12px;
+    align-items: baseline;
+}
+
+.career-subdate {
+    color: var(--accent-color);
+    font-weight: 500;
+    white-space: nowrap;
 }
 
 /* ==========================================================================
@@ -493,6 +504,12 @@ a:hover {
 /* ==========================================================================
    Responsive
    ========================================================================== */
+@media (max-width: 1100px) {
+    .resume-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
 @media (max-width: 900px) {
     .resume-grid {
         grid-template-columns: 1fr;
@@ -522,6 +539,11 @@ a:hover {
 
     .timeline-content {
         padding-left: 16px;
+    }
+
+    .career-sublist li {
+        grid-template-columns: 1fr;
+        gap: 0;
     }
 }
 
