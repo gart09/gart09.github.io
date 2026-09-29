@@ -188,10 +188,10 @@ h2 {
 
 h2::before {
     display: inline-block;
-    width: 3px;
+    width: 0;
     height: 10pt;
     margin-right: 2mm;
-    background: var(--accent);
+    border-left: 3px solid var(--accent);
     content: "";
     vertical-align: -1px;
 }
@@ -1034,10 +1034,10 @@ dd {
 
 .collaboration-implementation-heading::before {
     display: inline-block;
-    width: 3px;
+    width: 0;
     height: 10pt;
     margin-right: 2mm;
-    background: var(--accent);
+    border-left: 3px solid var(--accent);
     content: "";
     vertical-align: -1px;
 }
@@ -1281,6 +1281,11 @@ dd {
 }
 
 @media print {
+    * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
     html,
     body {
         background: #fff;
