@@ -380,6 +380,91 @@
                 <span>4</span>
             </footer>
         </article>
+
+        <article class="pdf-page recovery-page">
+            <header class="project-page-header implementation-page-header">
+                <div>
+                    <p class="eyebrow">PROJECT</p>
+                    <h1>Ace</h1>
+                    <p class="project-subtitle">선착순 쿠폰 발급 시스템</p>
+                </div>
+            </header>
+
+            <section class="recovery-hero">
+                <div class="recovery-hero-copy">
+                    <div class="implementation-title">
+                        <p class="implementation-kicker">주요 구현 내용</p>
+                        <h2>정합성 검증 복구 정책</h2>
+                        <p class="implementation-subtitle">복구 실행부터 이력 저장 · 재검증까지의 공통 파이프라인</p>
+                    </div>
+                    <div class="implementation-intro">
+                        <ul class="common-context-list">
+                            <li>정합성 검증마다 위반 규칙과 복구 방식은 상이<br>하지만 복구를 실행하고 결과를 관리하는 흐름은 공통으로 필요</li>
+                            <li>복구 정책 파이프라인은 일관되게 실행<br>검증별 실제 복구 로직은 각 팀원이 <code>ConsistencyRecoveryPolicy</code>로 구현</li>
+                            <li>복구 정책 실행 · 복구 이력 저장 · 성공 시 재검증 · <br><code>VerificationResult</code> 상태 갱신 흐름을 공통화</li>
+                        </ul>
+                    </div>
+                </div>
+                <figure class="project-figure recovery-flow-figure">
+                    <button type="button" class="image-zoom" data-zoom-src="../assets/images/ace_복구정책시퀀스다이어그램.png" data-zoom-alt="Ace 정합성 검증 복구 정책 시퀀스 다이어그램 크게 보기">
+                        <img src="../assets/images/ace_복구정책시퀀스다이어그램.png" alt="Ace 정합성 검증 복구 정책 시퀀스 다이어그램">
+                    </button>
+                    <figcaption>정합성 검증 복구 정책 시퀀스다이어그램 · 클릭하여 확대</figcaption>
+                </figure>
+            </section>
+
+            <section class="recovery-interface">
+                <h2>복구 실행 공통 인터페이스</h2>
+                <p class="recovery-highlight">트리거 종류(관리자 실행, 자동 실행)에 상관없이 <code>ConsistencyRecoveryDispatcher.recover()</code> 하나를 거쳐 복구하도록 구현</p>
+                <figure class="project-figure recovery-dispatcher-figure">
+                    <button type="button" class="image-zoom" data-zoom-src="../assets/images/ace_dispatcher_recover사진.png" data-zoom-alt="ConsistencyRecoveryDispatcher 복구 실행 코드 크게 보기">
+                        <img src="../assets/images/ace_dispatcher_recover사진.png" alt="ConsistencyRecoveryDispatcher 복구 실행 코드">
+                    </button>
+                </figure>
+                <dl class="recovery-parameters">
+                    <div><dt><code>resultId</code></dt><dd>복구 대상인 FAIL 상태의 정합성 검증 결과<br>FAIL 상태가 아니면 즉시 예외로 거부</dd></div>
+                    <div><dt><code>action</code></dt><dd>관리자가 선택한 복구 방식(<code>RecoveryAction</code>)<br>검증별 정책에 맞는 실제 복구 로직을 선택</dd></div>
+                </dl>
+            </section>
+
+            <div class="project-divider recovery-divider" aria-hidden="true"></div>
+
+            <section class="recovery-outcome-section">
+                <h2>복구 진행 과정</h2>
+                <ul class="recovery-process-list">
+                </ul>
+                <div class="recovery-outcome-grid">
+                    <article>
+                        <h3><span>01</span>정책 실행</h3>
+                        <ul>
+                            <li>위반 <code>verificationResult</code>의 <code>checkName</code>으로 수행한 검증 식별</li>
+                            <li>하나의 검증에서 여러 <code>coupon_event</code>가 개별적으로 위반될 수 있음</li>
+                            <li>해당 검증의 복구 정책을 찾아 각 위반 건에 대한 복구 수행</li>
+                            <li>건별 복구 결과를 <code>List&lt;RecoveryOutcome&gt;</code>로 반환</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3><span>02</span>이력 저장</h3>
+                        <ul>
+                            <li><code>ConsistencyRecoveryDispatcher</code>가 <code>List&lt;RecoveryOutcome&gt;</code>를 순회</li>
+                            <li>각 <code>RecoveryOutcome</code>의 복구 성공·실패 여부와 관계없이 모든 복구 시도를 <code>recovery_result</code> 테이블에 저장</li>
+                            <li>건별 <code>REQUIRES_NEW</code> 트랜잭션으로 결과를 즉시 커밋해 이력을 보존</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3><span>03</span>재검증 및 상태 갱신</h3>
+                        <ul>
+                            <li>복구 성공 시 동일한 검증을 자동으로 다시 실행</li>
+                            <li>재검증까지 통과한 경우에만 최종 복구 성공으로 인정하고 상태를 갱신</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <footer class="page-footer">
+                <span>5</span>
+            </footer>
+        </article>
     </main>
 
     <div id="pdf-image-modal" class="pdf-image-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="이미지 크게 보기">

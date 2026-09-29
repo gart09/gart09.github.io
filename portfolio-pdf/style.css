@@ -630,19 +630,22 @@ dd {
     margin: 4mm 0 0;
 }
 
-.parameter-list div {
+.parameter-list div,
+.recovery-parameters div {
     padding-left: 3mm;
     border-left: 1px solid var(--line);
 }
 
-.parameter-list dt {
+.parameter-list dt,
+.recovery-parameters dt {
     margin-bottom: 0.5mm;
     color: var(--ink);
     font-size: 8.5pt;
     font-weight: 700;
 }
 
-.parameter-list dd {
+.parameter-list dd,
+.recovery-parameters dd {
     color: var(--muted);
     font-size: 8.3pt;
     font-weight: 400;
@@ -740,13 +743,176 @@ dd {
     content: "•";
 }
 
-.implementation-page code {
+.implementation-page code,
+.recovery-page code {
     padding: 0.25mm 0.7mm;
     border-radius: 0.8mm;
     background: var(--surface);
     color: var(--ink);
     font-family: "SFMono-Regular", Consolas, monospace;
     font-size: 0.92em;
+}
+
+.recovery-hero {
+    display: grid;
+    grid-template-columns: 1fr 62mm;
+    gap: 6mm;
+    align-items: start;
+}
+
+.recovery-page .implementation-kicker {
+    font-size: 9pt;
+}
+
+.recovery-page .implementation-title h2 {
+    font-size: 17pt;
+}
+
+.recovery-page .implementation-subtitle {
+    font-size: 10.5pt;
+}
+
+.recovery-page .common-context-list li {
+    font-size: 9.8pt;
+}
+
+.recovery-flow-figure .image-zoom {
+    width: 70mm;
+    margin-left: auto;
+}
+
+.recovery-flow-figure {
+    margin-top: 10mm;
+}
+
+.recovery-flow-figure img {
+    width: 70mm;
+    height: 54mm;
+    object-fit: contain;
+    object-position: top center;
+}
+
+.recovery-flow-figure figcaption {
+    font-size: 6.5pt;
+}
+
+.recovery-interface {
+    margin-top: 2mm;
+}
+
+.recovery-interface h2,
+.recovery-outcome-section h2 {
+    margin-bottom: 2.5mm;
+    font-size: 12pt;
+}
+
+.recovery-highlight {
+    margin: 0;
+    color: var(--ink);
+    font-size: 9.5pt;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.65;
+}
+
+.recovery-dispatcher-figure {
+    margin: 2mm 0 3mm;
+}
+
+.recovery-dispatcher-figure .image-zoom {
+    width: fit-content;
+}
+
+.recovery-dispatcher-figure img {
+    width: auto;
+    max-height: 6mm;
+    object-fit: contain;
+    object-position: left center;
+}
+
+.recovery-parameters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5mm;
+    margin: 4mm 0 0;
+}
+
+.recovery-parameters dt {
+    font-size: 9pt;
+}
+
+.recovery-parameters dd {
+    font-size: 8.8pt;
+}
+
+.recovery-divider {
+    margin: 4mm 0 3mm;
+}
+
+.recovery-process-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.recovery-process-list li {
+    padding-left: 3mm;
+    border-left: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 9.5pt;
+    line-height: 1.6;
+}
+
+.recovery-outcome-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5mm;
+    margin-top: 4mm;
+}
+
+.recovery-outcome-grid article {
+    padding-left: 3mm;
+    border-left: 1px solid var(--line);
+}
+
+.recovery-outcome-grid h3 {
+    margin: 0 0 2mm;
+    color: var(--ink);
+    font-size: 10pt;
+    line-height: 1.45;
+}
+
+.recovery-outcome-grid h3 span {
+    display: block;
+    margin-bottom: 0.5mm;
+    color: var(--accent);
+    font-size: 8.5pt;
+    letter-spacing: 0.08em;
+}
+
+.recovery-outcome-grid ul {
+    display: grid;
+    gap: 1.5mm;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.recovery-outcome-grid li {
+    position: relative;
+    padding-left: 2.5mm;
+    color: var(--muted);
+    font-size: 8.5pt;
+    letter-spacing: -0.025em;
+    line-height: 1.5;
+}
+
+.recovery-outcome-grid li::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--accent);
+    content: "•";
 }
 
 .contribution-grid {
@@ -857,7 +1023,10 @@ dd {
     .parameter-list,
     .batch-rules,
     .step-components,
-    .implementation-hero {
+    .implementation-hero,
+    .recovery-hero,
+    .recovery-parameters,
+    .recovery-outcome-grid {
         grid-template-columns: 1fr;
     }
 
@@ -903,6 +1072,12 @@ dd {
 
     .title-flow-figure .image-zoom {
         width: 100%;
+    }
+
+    .recovery-flow-figure .image-zoom,
+    .recovery-flow-figure img {
+        width: 100%;
+        height: auto;
     }
 
     .implementation-title {
