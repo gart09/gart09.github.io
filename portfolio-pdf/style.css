@@ -108,7 +108,6 @@ main {
 
 .eyebrow,
 .intro-label,
-.page-number,
 .page-footer,
 .period {
     color: var(--muted);
@@ -119,7 +118,6 @@ main {
 
 .eyebrow,
 .intro-label,
-.page-number,
 .page-footer {
     margin: 0;
 }
@@ -254,6 +252,24 @@ dd {
     font-size: 8.5pt;
 }
 
+.career-sublist {
+    display: grid;
+    gap: 0.8mm;
+    margin-top: 0.8mm;
+    color: var(--muted);
+    font-size: 7.4pt;
+}
+
+.career-sublist span {
+    display: flex;
+    gap: 2mm;
+}
+
+.career-sublist time {
+    min-width: 24mm;
+    color: var(--muted);
+}
+
 .credentials-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -328,7 +344,7 @@ dd {
     bottom: 4mm;
     left: 18mm;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding-top: 2mm;
     border-top: 1px solid var(--line);
     font-size: 6.5pt;
