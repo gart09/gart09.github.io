@@ -414,7 +414,7 @@ dd {
 .project-figure figcaption {
     margin-top: 1.5mm;
     color: var(--muted);
-    font-size: 7pt;
+    font-size: 8pt;
     text-align: right;
 }
 
@@ -560,7 +560,7 @@ dd {
 }
 
 .title-flow-figure figcaption {
-    font-size: 6.5pt;
+    font-size: 8pt;
 }
 
 .implementation-intro {
@@ -793,7 +793,7 @@ dd {
 }
 
 .recovery-flow-figure figcaption {
-    font-size: 6.5pt;
+    font-size: 8pt;
 }
 
 .recovery-interface {
@@ -915,6 +915,101 @@ dd {
     content: "•";
 }
 
+.reflection-title {
+    padding: 2mm 0 4mm;
+}
+
+.reflection-title h2 {
+    margin: 0 0 2mm;
+    font-size: 16pt;
+    line-height: 1.35;
+}
+
+.reflection-title h2::before {
+    display: none;
+}
+
+.reflection-problem,
+.reflection-solution {
+    display: grid;
+    grid-template-columns: 1fr 64mm;
+    gap: 6mm;
+    align-items: start;
+}
+
+.reflection-problem h2,
+.reflection-solution h2,
+.reflection-learned h2 {
+    margin-bottom: 2.5mm;
+    font-size: 12pt;
+}
+
+.reflection-list {
+    display: grid;
+    gap: 2.5mm;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.reflection-list li {
+    padding-left: 3mm;
+    border-left: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 8.8pt;
+    letter-spacing: -0.025em;
+    line-height: 1.6;
+}
+
+.reflection-figure img {
+    width: 70mm;
+    height: 35.2mm;
+    object-fit: contain;
+}
+
+.reflection-figure figcaption {
+    font-size: 8pt;
+}
+
+.reflection-figure {
+    margin-top: 18mm;
+}
+
+.reflection-figure2 img {
+    width: 65mm;
+    height: 35mm;
+    object-fit: contain;
+}
+
+.reflection-figure2 figcaption {
+    font-size: 8pt;
+}
+
+.reflection-figure2 {
+    margin-top: 6mm;
+}
+
+.reflection-divider {
+    margin: 5mm 0 4mm;
+}
+
+.reflection-solution-list li {
+    font-size: 9pt;
+}
+
+.reflection-learned {
+    margin-top: 0mm;
+}
+
+.reflection-page code {
+    padding: 0.25mm 0.7mm;
+    border-radius: 0.8mm;
+    background: var(--surface);
+    color: var(--ink);
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 0.92em;
+}
+
 .contribution-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -985,6 +1080,16 @@ dd {
     line-height: 1;
 }
 
+.verification-figure figcaption {
+    position: relative;
+    left: 6mm;
+}
+
+.recovery-flow-figure figcaption {
+    position: relative;
+    left: 6mm;
+}
+
 @media print {
     html,
     body {
@@ -1026,7 +1131,9 @@ dd {
     .implementation-hero,
     .recovery-hero,
     .recovery-parameters,
-    .recovery-outcome-grid {
+    .recovery-outcome-grid,
+    .reflection-problem,
+    .reflection-solution {
         grid-template-columns: 1fr;
     }
 
