@@ -350,6 +350,212 @@ dd {
     font-size: 6.5pt;
 }
 
+.project-page-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 10mm;
+    padding-bottom: 5mm;
+}
+
+.project-page-header h1 {
+    margin: 2mm 0 1mm;
+    font-size: 30pt;
+}
+
+.project-subtitle {
+    margin: 0 0 2.5mm;
+    color: var(--accent);
+    font-size: 11pt;
+    font-weight: 700;
+}
+
+.project-header-meta {
+    display: grid;
+    align-content: end;
+    gap: 1.5mm;
+    text-align: right;
+}
+
+.project-header-meta p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 8pt;
+}
+
+.project-header-meta .project-award {
+    color: var(--ink);
+    font-size: 8.5pt;
+    font-weight: 600;
+}
+
+.project-hero {
+    padding: 5mm 0;
+}
+
+.project-figure {
+    margin: 0;
+}
+
+.project-figure img {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 1.5mm;
+}
+
+.project-figure figcaption {
+    margin-top: 1.5mm;
+    color: var(--muted);
+    font-size: 7pt;
+    text-align: right;
+}
+
+.screenshot-figure img {
+    aspect-ratio: 2.13 / 1;
+    object-fit: cover;
+    object-position: top;
+}
+
+.image-zoom {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 1.5mm;
+    background: transparent;
+    cursor: zoom-in;
+    overflow: hidden;
+}
+
+.image-zoom:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.project-summary h2,
+.project-goal h2,
+.contribution-section h2 {
+    margin-bottom: 2.5mm;
+}
+
+.project-summary > p {
+    margin: 0 0 3mm;
+    font-size: 9.3pt;
+    letter-spacing: -0.025em;
+    line-height: 1.75;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5mm;
+    margin-top: 0;
+}
+
+.tech-tags span {
+    padding: 1.1mm 2.2mm;
+    border: 1px solid var(--line);
+    border-radius: 10mm;
+    color: var(--muted);
+    font-size: 7.2pt;
+}
+
+.project-divider {
+    height: 1px;
+    margin: 0 0 5mm;
+    background: var(--line);
+}
+
+.goal-list {
+    display: grid;
+    gap: 4mm;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.goal-list li {
+    padding-left: 3mm;
+    border-left: 1px solid var(--line);
+    font-size: 9.2pt;
+    letter-spacing: -0.025em;
+    line-height: 1.7;
+}
+
+.contribution-divider {
+    margin: 5mm 0 4mm;
+}
+
+.contribution-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5mm 6mm;
+}
+
+.contribution-card {
+    padding-left: 3mm;
+    border-left: 1px solid var(--line);
+}
+
+.contribution-card h3 {
+    margin: 0 0 2mm;
+    color: var(--ink);
+    font-size: 9.3pt;
+}
+
+.contribution-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 8.2pt;
+    letter-spacing: -0.025em;
+    line-height: 1.7;
+}
+
+.contribution-card code {
+    padding: 0.3mm 0.8mm;
+    border-radius: 0.8mm;
+    background: var(--surface);
+    color: var(--ink);
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 7.6pt;
+}
+
+.pdf-image-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: none;
+    place-items: center;
+    padding: 5vw;
+    background: rgb(16 24 40 / 82%);
+}
+
+.pdf-image-modal.is-open {
+    display: grid;
+}
+
+.pdf-image-modal img {
+    max-width: 90vw;
+    max-height: 88vh;
+    border-radius: 2mm;
+    background: #fff;
+}
+
+.modal-close {
+    position: absolute;
+    top: 3vw;
+    right: 4vw;
+    width: 9mm;
+    height: 9mm;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--ink);
+    cursor: pointer;
+    font-size: 18pt;
+    line-height: 1;
+}
+
 @media print {
     html,
     body {
@@ -363,6 +569,10 @@ dd {
     .pdf-page {
         margin: 0;
         box-shadow: none;
+    }
+
+    .pdf-image-modal {
+        display: none !important;
     }
 }
 
@@ -379,7 +589,8 @@ dd {
 
     .profile-grid,
     .stack-groups,
-    .credentials-columns {
+    .credentials-columns,
+    .contribution-grid {
         grid-template-columns: 1fr;
     }
 
@@ -404,4 +615,14 @@ dd {
         position: static;
         margin-top: 7vw;
     }
+
+    .project-page-header {
+        flex-direction: column;
+        gap: 4vw;
+    }
+
+    .project-header-meta {
+        text-align: left;
+    }
+
 }
