@@ -1010,6 +1010,196 @@ dd {
     font-size: 0.92em;
 }
 
+.collaboration-background,
+.collaboration-problem {
+    display: grid;
+    grid-template-columns: 1fr 64mm;
+    gap: 6mm;
+    align-items: start;
+}
+
+.collaboration-background h2,
+.collaboration-problem h2,
+.collaboration-next h2 {
+    margin-bottom: 2.5mm;
+    font-size: 12pt;
+}
+
+.collaboration-implementation-heading {
+    margin: 4mm 0 2.5mm;
+    color: var(--ink);
+    font-size: 12pt;
+    letter-spacing: -0.03em;
+}
+
+.collaboration-implementation-heading::before {
+    display: inline-block;
+    width: 3px;
+    height: 10pt;
+    margin-right: 2mm;
+    background: var(--accent);
+    content: "";
+    vertical-align: -1px;
+}
+
+.collaboration-background-images {
+    display: grid;
+    gap: 3mm;
+}
+
+.collaboration-figure img {
+    width: 100%;
+    height: auto;
+}
+
+.collaboration-divider {
+    margin: 5mm 0 4mm;
+}
+
+/* 일관성 없이 남은 커밋 메시지 */
+.collaboration-pr-figure {
+    width: 100%;
+    margin-left: auto;
+    transform: translateX(45mm);
+}
+
+.collaboration-pr-figure img {
+    width: 23mm;
+    height: auto;
+}
+
+.collaboration-pr-figure figcaption {
+    font-size: 8pt;
+    text-align: center;
+    transform: translateX(-27mm);
+}
+
+
+/* GitHub Actions 스크립트 */
+.collaboration-action-figure {
+    width: 45mm;
+}
+
+.collaboration-action-figure .image-zoom {
+    width: 45mm;
+}
+
+.collaboration-action-figure img {
+    width: 45mm;
+    height: auto;
+}
+
+.collaboration-action-figure figcaption {
+    font-size: 8pt;
+    text-align: center;
+    transform: translateX(5mm);
+}
+
+
+/* 도입 후 커밋 목록 */
+.collaboration-result-figure {
+    width: 30mm;
+    margin-left: auto;
+}
+
+.collaboration-result-figure .image-zoom {
+    width: 30mm;
+}
+
+.collaboration-result-figure img {
+    width: 23mm;
+    height: auto;
+}
+
+.collaboration-result-figure figcaption {
+    font-size: 8pt;
+    text-align: center;
+}
+
+.collaboration-next-images {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 5mm;
+}
+
+.collaboration-next {
+    margin-top: 5mm;
+}
+
+.collaboration-next-content {
+    display: grid;
+    grid-template-columns: 1fr 70mm;
+    gap: 6mm;
+    align-items: start;
+}
+
+.collaboration-next-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5mm;
+    align-items: start;
+}
+
+.collaboration-next-figure {
+    width: 100%;
+    margin: 0;
+}
+
+.collaboration-next-figure .image-zoom {
+    display: flex;
+    width: 100%;
+    height: 43mm;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: visible;
+}
+
+.collaboration-next-figure img {
+    display: block;
+    width: auto;
+    height: 43mm;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.collaboration-next-figure figcaption {
+    width: 100%;
+    margin-top: 1.5mm;
+    font-size: 8pt;
+    text-align: center;
+}
+
+.collaboration-page code {
+    padding: 0.25mm 0.7mm;
+    border-radius: 0.8mm;
+    background: var(--surface);
+    color: var(--ink);
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 0.92em;
+}
+
+.collaboration-narrow-figure {
+    width: fit-content;
+    margin-left: auto;
+}
+
+.collaboration-narrow-figure .image-zoom {
+    width: fit-content;
+}
+
+.collaboration-narrow-figure img {
+    display: block;
+    width: auto;
+    height: 43mm;
+}
+
+.collaboration-narrow-figure figcaption {
+    font-size: 8pt;
+    text-align: center;
+}
+
+
 .contribution-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1133,7 +1323,11 @@ dd {
     .recovery-parameters,
     .recovery-outcome-grid,
     .reflection-problem,
-    .reflection-solution {
+    .reflection-solution,
+    .collaboration-background,
+    .collaboration-problem,
+    .collaboration-next-content,
+    .collaboration-next-images {
         grid-template-columns: 1fr;
     }
 
