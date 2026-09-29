@@ -242,6 +242,144 @@
                 <span>2</span>
             </footer>
         </article>
+
+        <article class="pdf-page design-page">
+            <header class="project-page-header design-page-header">
+                <div>
+                    <p class="eyebrow">PROJECT</p>
+                    <h1>Ace</h1>
+                    <p class="project-subtitle">선착순 쿠폰 발급 시스템</p>
+                </div>
+            </header>
+
+            <section class="design-section">
+                <h2>프로젝트 아키텍처</h2>
+                <figure class="project-figure design-figure">
+                    <button type="button" class="image-zoom" data-zoom-src="../assets/images/ace_아키텍처.png" data-zoom-alt="Ace 프로젝트 아키텍처 크게 보기">
+                        <img src="../assets/images/ace_아키텍처.png" alt="Ace 프로젝트 아키텍처 다이어그램">
+                    </button>
+                    <figcaption>클릭하여 확대</figcaption>
+                </figure>
+            </section>
+
+            <div class="project-divider design-divider" aria-hidden="true"></div>
+
+            <section class="design-section">
+                <h2>ERD</h2>
+                <figure class="project-figure design-figure">
+                    <button type="button" class="image-zoom" data-zoom-src="../assets/images/ace_ERD사진.png" data-zoom-alt="Ace ERD 크게 보기">
+                        <img src="../assets/images/ace_ERD사진.png" alt="Ace ERD">
+                    </button>
+                    <figcaption>클릭하여 확대</figcaption>
+                </figure>
+            </section>
+
+            <footer class="page-footer">
+                <span>3</span>
+            </footer>
+        </article>
+
+        <article class="pdf-page implementation-page">
+            <header class="project-page-header implementation-page-header">
+                <div>
+                    <p class="eyebrow">PROJECT</p>
+                    <h1>Ace</h1>
+                    <p class="project-subtitle">선착순 쿠폰 발급 시스템</p>
+                </div>
+            </header>
+
+            <section class="implementation-hero">
+                <div class="implementation-hero-copy">
+                    <div class="implementation-title">
+                        <p class="implementation-kicker">주요 구현 내용</p>
+                        <h2>정합성 검증 파이프라인</h2>
+                        <p class="implementation-subtitle">공통 인터페이스와 Spring Batch 기반 비동기 검증 구조</p>
+                    </div>
+                    <div class="implementation-intro">
+                        <ul class="common-context-list">
+                            <li>3명의 팀원이 정합성 검증 파트를 담당<br>
+                                일관된 구조로 개발할 수 있도록 공통 인터페이스 설계</li>
+                            <li>프로젝트가 완성되지 않은 시점<br>
+                                정합성 검증의 호출 위치와 실행 시점이 확정되지 않은 상태</li>
+                            <li>코드 구현과 실행 시점을 분리<br>
+                                <code>Runner</code>에 필요한 매개변수를 전달하면 해당 검증 로직이 실행되도록 구현</li>
+                        </ul>
+                    </div>
+                </div>
+                <figure class="project-figure verification-figure title-flow-figure">
+                    <button type="button" class="image-zoom" data-zoom-src="../assets/images/ace_정합성검증시퀀스다이어그램.png" data-zoom-alt="Ace 정합성 검증 시퀀스 다이어그램 크게 보기">
+                        <img src="../assets/images/ace_정합성검증시퀀스다이어그램.png" alt="Ace 정합성 검증 시퀀스 다이어그램">
+                    </button>
+                    <figcaption>정합성 검증 시퀀스다이어그램 · 클릭하여 확대</figcaption>
+                </figure>
+            </section>
+
+            <section class="verification-overview">
+                <div class="runner-content">
+                    <h2>검증 실행 공통 인터페이스</h2>
+                    <p class="runner-highlight">검증을 실행하는 곳에서는 Runner에 다음 3가지 인자만 전달하면 검증을 실행할 수 있는 구조로 구현</p>
+                    <figure class="project-figure runner-figure">
+                        <button type="button" class="image-zoom" data-zoom-src="../assets/images/ace_runner_run사진.png" data-zoom-alt="ConsistencyVerificationRunner 실행 코드 크게 보기">
+                            <img src="../assets/images/ace_runner_run사진.png" alt="ConsistencyVerificationRunner 실행 코드">
+                        </button>
+                    </figure>
+                    <dl class="parameter-list">
+                        <div><dt><code>checks</code></dt><dd>실제로 검증할 정합성 검증 객체<br>ex) Stock, Structural, StateMachine...</dd></div>
+                        <div><dt><code>scope</code></dt><dd>검증을 실행할 범위를 결정하는 매개변수<br>ex) 특정 쿠폰 이벤트, 시간 구간, 전체</dd></div>
+                        <div><dt><code>triggerType</code></dt><dd>검증 실행 방식을 결정하는 매개변수<br>ex) 스케쥴러, 수동 실행, 복구 후 재검증</dd></div>
+                    </dl>
+                </div>
+            </section>
+
+            <div class="project-divider implementation-divider" aria-hidden="true"></div>
+
+            <section class="batch-section">
+                <h2>Spring Batch 기반 비동기 검증</h2>
+                <ul class="batch-rules">
+                    <li>ALL 스코프는 한 번에 수백만 건을 검사하므로 시간이 많이 소요<br>
+                        동기 처리 대신 Spring Batch로 비동기 처리하도록 구현</li>
+                    <li>
+                        <span>마찬가지로 <code>ConsistencyVerificationRunner</code>를 통해 인자만 건네면 쉽게 실행</span>
+                        <figure class="project-figure batch-run-figure">
+                            <button type="button" class="image-zoom" data-zoom-src="../assets/images/ace_runAsync사진.png" data-zoom-alt="비동기 정합성 검증 실행 코드 크게 보기">
+                                <img src="../assets/images/ace_runAsync사진.png" alt="비동기 정합성 검증 실행 코드">
+                            </button>
+                        </figure>
+                    </li>
+                    <li><code>ConsistencyBatchJobFactory</code>가 요청받은 검증 1개당 Step 1개씩 동적으로 조립해 Job을 구성</li>
+                </ul>
+
+                <h3 class="step-components-title">Step 구성 요소</h3>
+                <div class="step-components">
+                    <article>
+                        <h4><span>01</span>EventIdPageReader</h4>
+                        <ul>
+                            <li><code>event_id</code> 기준 keyset pagination으로 10개 이벤트 데이터를 하나의 청크로 처리</li>
+                            <li><code>ItemStream</code>으로 마지막 <code>event_id</code>를 저장해, 비정상 종료 후 재시작 시 해당 지점부터 이어서 읽음</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h4><span>02</span>ConsistencyCheckItemProcessor</h4>
+                        <ul>
+                            <li>Reader가 읽은 페이지(event 10개)로 해당 Step의 검증을 실행</li>
+                            <li>실행 도중 오류가 발생하면 커밋된 페이지 이후부터 재실행</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h4><span>03</span>CheckResultAccumulatorWriter</h4>
+                        <ul>
+                            <li>페이지별 위반 건을 즉시 저장, 위반 건수는 Step 종료까지 누적</li>
+                            <li><code>ItemStream</code>으로 누적 위반 건수도 보존해 재시작 후에도 이전 집계 유지</li>
+                            <li>Step 종료 시 <code>StepCompletionListener</code>가 <code>VerificationResult</code>를 최종 저장</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <footer class="page-footer">
+                <span>4</span>
+            </footer>
+        </article>
     </main>
 
     <div id="pdf-image-modal" class="pdf-image-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="이미지 크게 보기">
