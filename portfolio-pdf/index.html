@@ -261,7 +261,6 @@
                     <button type="button" class="image-zoom" data-zoom-src="../assets/images/ace_아키텍처.png" data-zoom-alt="Ace 프로젝트 아키텍처 크게 보기">
                         <img src="../assets/images/ace_아키텍처.png" alt="Ace 프로젝트 아키텍처 다이어그램">
                     </button>
-                    <figcaption>클릭하여 확대</figcaption>
                 </figure>
             </section>
 
@@ -273,7 +272,6 @@
                     <button type="button" class="image-zoom" data-zoom-src="../assets/images/ace_ERD사진.png" data-zoom-alt="Ace ERD 크게 보기">
                         <img src="../assets/images/ace_ERD사진.png" alt="Ace ERD">
                     </button>
-                    <figcaption>클릭하여 확대</figcaption>
                 </figure>
             </section>
 
@@ -661,6 +659,15 @@
         };
 
         document.querySelectorAll('[data-zoom-src]').forEach((button) => {
+            const assetName = button.dataset.zoomSrc.split('/').pop();
+            const pdfImageLink = document.createElement('a');
+            pdfImageLink.className = 'pdf-image-link';
+            pdfImageLink.href = `https://gart09.github.io/assets/images/${encodeURIComponent(assetName)}`;
+            pdfImageLink.target = '_blank';
+            pdfImageLink.rel = 'noopener noreferrer';
+            pdfImageLink.setAttribute('aria-label', button.dataset.zoomAlt);
+            button.closest('figure')?.append(pdfImageLink);
+
             button.addEventListener('click', () => {
                 modalImage.src = button.dataset.zoomSrc;
                 modalImage.alt = button.dataset.zoomAlt;

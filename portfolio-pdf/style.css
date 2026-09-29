@@ -456,6 +456,10 @@ dd {
     outline-offset: 2px;
 }
 
+.pdf-image-link {
+    display: none;
+}
+
 .project-summary h2,
 .project-goal h2,
 .contribution-section h2 {
@@ -1311,6 +1315,17 @@ dd {
 
     .pdf-image-modal {
         display: none !important;
+    }
+
+    .project-figure {
+        position: relative;
+    }
+
+    .pdf-image-link {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: block;
     }
 }
 
