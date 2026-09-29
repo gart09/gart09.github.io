@@ -200,7 +200,7 @@
             <section class="project-hero">
                 <div class="project-summary">
                     <h2>프로젝트 소개</h2>
-                    <p>대규모 동시 요청 상황에서도 동시성 제어와 데이터 정합성을 보장하는 선착순 쿠폰 발급 시스템</p>
+                    <p>대규모 동시 요청에서도 안정적인 쿠폰 발급과 사후 데이터 검증·복구를 지원하는 선착순 쿠폰 발급 시스템</p>
                 </div>
                 <div class="project-divider contribution-divider" aria-hidden="true"></div>
             </section>
@@ -208,9 +208,8 @@
             <section class="project-goal">
                 <h2>프로젝트 목표</h2>
                 <ul class="goal-list">
-                    <li>서비스 개발 프로젝트가 아닌, 실제 현업에서 마주할 수 있는 문제를 해결하는 과제 형태의 프로젝트</li>
-                    <li>대규모 동시 요청 상황에서 동시성 제어 + 데이터 정합성을 만족하는 쿠폰 발급 시스템 구현</li>
-                    <li>DB에 저장된 데이터들을 검증할 수 있는 사후 처리 성격의 정합성 검증 시스템 구현</li>
+                    <li>동시 요청 상황에서 쿠폰의 초과 발급을 방지하고 데이터 정합성 보장</li>
+                    <li>DB에 저장된 데이터를 검증할 수 있는 사후 처리 성격의 정합성 검증 시스템 구현</li>
                 </ul>
             </section>
 
@@ -221,19 +220,19 @@
                 <div class="contribution-grid">
                     <article class="contribution-card">
                         <h3>협업을 위한 기초 인프라 환경 조성</h3>
-                        <p><code>ISSUE/PR 템플릿</code>, <code>gitHook</code>, <code>docker Compose</code> 등 협업에 필요한 기초 인프라 환경을 조성</p>
+                        <p><code>ISSUE/PR 템플릿</code>, <code>Git Hook</code>, <code>Docker Compose</code> 등 <br>협업에 필요한 기초 인프라 환경을 조성</p>
                     </article>
                     <article class="contribution-card">
                         <h3>정합성 검증 공통 로직 구현</h3>
-                        <p>정합성 검증 공통 인터페이스와 API를 구현하고, 재고 정합성 검증을 레퍼런스로 구현하여 팀원들이 동일한 구조로 검증 로직을 개발할 수 있도록 함</p>
+                        <p>정합성 검증 공통 인터페이스와 실행 파이프라인을 구현<br> 재고 정합성 검증을 레퍼런스로 구현<br>팀원들이 동일한 구조로 검증 로직을 개발할 수 있도록 함</p>
                     </article>
                     <article class="contribution-card">
                         <h3><code>Spring Batch</code>를 활용한 비동기 검증 파이프라인 구현</h3>
                         <p>대규모 데이터 정합성 검증을 청크 단위로 처리<br> 실패 시 중단 지점부터 재개할 수 있는 비동기 파이프라인을 구현</p>
                     </article>
                     <article class="contribution-card">
-                        <h3>정합성 위반건 복구 정책 공통 로직 구현</h3>
-                        <p>정합성 위반 데이터의 복구 정책 공통 인터페이스와 API를 구현<br> 관리자 확인 후 필요한 복구가 수행<br>재고 정합성 검증 위반 복구 정책을 레퍼런스로 제공해, 팀원들이 동일한 구조로 개발할 수 있도록 함</p>
+                        <h3>정합성 위반 건 복구 정책 공통 로직 구현</h3>
+                        <p>정합성 복구 정책 공통 인터페이스와 실행·이력 저장·재검증 파이프라인을 구현<br> 관리자 확인 후 필요한 복구 수행<br>재고 정합성 검증 위반 복구 정책을 레퍼런스로 제공</p>
                     </article>
                 </div>
             </section>
@@ -326,7 +325,7 @@
                     <dl class="parameter-list">
                         <div><dt><code>checks</code></dt><dd>실제로 검증할 정합성 검증 객체<br>ex) Stock, Structural, StateMachine...</dd></div>
                         <div><dt><code>scope</code></dt><dd>검증을 실행할 범위를 결정하는 매개변수<br>ex) 특정 쿠폰 이벤트, 시간 구간, 전체</dd></div>
-                        <div><dt><code>triggerType</code></dt><dd>검증 실행 방식을 결정하는 매개변수<br>ex) 스케쥴러, 수동 실행, 복구 후 재검증</dd></div>
+                        <div><dt><code>triggerType</code></dt><dd>검증 실행 방식을 결정하는 매개변수<br>ex) 스케줄러, 수동 실행, 복구 후 재검증</dd></div>
                     </dl>
                 </div>
             </section>
@@ -337,7 +336,7 @@
                 <h2>Spring Batch 기반 비동기 검증</h2>
                 <ul class="batch-rules">
                     <li>ALL 스코프는 한 번에 수백만 건을 검사하므로 시간이 많이 소요<br>
-                        동기 처리 대신 Spring Batch로 비동기 처리하도록 구현</li>
+                        요청과 검증 실행을 분리하고 <code>Spring Batch</code> Job으로 처리하도록 구현</li>
                     <li>
                         <span>마찬가지로 <code>ConsistencyVerificationRunner</code>를 통해 인자만 건네면 쉽게 실행</span>
                         <figure class="project-figure batch-run-figure">
@@ -354,14 +353,14 @@
                     <article>
                         <h4><span>01</span>EventIdPageReader</h4>
                         <ul>
-                            <li><code>event_id</code> 기준 keyset pagination으로 10개 이벤트 데이터를 하나의 청크로 처리</li>
+                            <li><code>event_id</code> 기준 keyset pagination으로 <code>coupon_event</code>를 10개씩 조회</li>
                             <li><code>ItemStream</code>으로 마지막 <code>event_id</code>를 저장해, 비정상 종료 후 재시작 시 해당 지점부터 이어서 읽음</li>
                         </ul>
                     </article>
                     <article>
                         <h4><span>02</span>ConsistencyCheckItemProcessor</h4>
                         <ul>
-                            <li>Reader가 읽은 페이지(event 10개)로 해당 Step의 검증을 실행</li>
+                            <li>Reader가 읽은 페이지(<code>coupon_event</code> 10개)로 해당 Step의 검증을 실행</li>
                             <li>실행 도중 오류가 발생하면 커밋된 페이지 이후부터 재실행</li>
                         </ul>
                     </article>
@@ -431,13 +430,11 @@
 
             <section class="recovery-outcome-section">
                 <h2>복구 진행 과정</h2>
-                <ul class="recovery-process-list">
-                </ul>
                 <div class="recovery-outcome-grid">
                     <article>
                         <h3><span>01</span>정책 실행</h3>
                         <ul>
-                            <li>위반 <code>verificationResult</code>의 <code>checkName</code>으로 수행한 검증 식별</li>
+                            <li>위반 <code>VerificationResult</code>의 <code>checkName</code>으로 수행한 검증 식별</li>
                             <li>하나의 검증에서 여러 <code>coupon_event</code>가 개별적으로 위반될 수 있음</li>
                             <li>해당 검증의 복구 정책을 찾아 각 위반 건에 대한 복구 수행</li>
                             <li>건별 복구 결과를 <code>List&lt;RecoveryOutcome&gt;</code>로 반환</li>
@@ -488,7 +485,7 @@
                         <li><code>VerificationResult</code>의 <code>diff_detail</code> 컬럼 안에 위반 내역 메타데이터를 <br>하나의 <code>sample</code> 키로 저장</li>
                         <li>위반 건수가 많아지면 컬럼 데이터가 커질 수 있음을 사전에 인지<br>하지만 대량 위반은 발생하지 않을 것이라 판단, 기존 구조를 유지</li>
                         <li>테스트 중 Redis와 로컬 환경의 시계가 어긋나면서 정상 데이터가 대량 위반으로 판정되어, 위반 1만 건이 한 번에 쌓이는 상황 발생</li>
-                        <li>원인은 MySQL 조회 시 <code>diff_detail</code> 값이 정렬 메모리 버퍼 올라감<br> 크기가 매우 커 한도(256KB)를 초과, <code>Out of sort memory</code> 오류 발생</li>
+                        <li>MySQL 조회 과정에서 대용량 <code>diff_detail</code> 값이 정렬 대상에 포함<br>정렬 메모리가 부족해져 <code>Out of sort memory</code> 오류 발생</li>
                     </ul>
                 </div>
                 <figure class="project-figure reflection-figure">
@@ -507,7 +504,7 @@
                     <ul class="reflection-list reflection-solution-list">
                         <li>위반 사항을 <code>verification_violation</code> 테이블에 저장<br> 위반 1건을 행 1개로 분리</li>
                         <li><code>diff_detail</code>은 각 검증이 필요한 개별 메타데이터만 저장하도록 역할을 축소</li>
-                        <li>위반 건수가 늘어도 저장이 실패 오류 발생 X<br> 유형·대상별 조회 및 복구 정책 연결이 가능해짐</li>
+                        <li>위반 건수가 늘어나더라도 검증 결과 저장이 실패하지 않도록 개선<br> 유형·대상별 조회 및 복구 정책 연결이 가능해짐</li>
                     </ul>
                 </div>
                 <figure class="project-figure reflection-figure2">
@@ -544,7 +541,7 @@
 
             <section class="reflection-title collaboration-title">
                 <p class="implementation-kicker">고찰 · 협업 이슈</p>
-                <h2>로컬 gitHook으로 커밋 메시지 컨벤션 검증</h2>
+                <h2>로컬 Git Hook으로 커밋 메시지 컨벤션 검증</h2>
                 <p class="implementation-subtitle">일관된 Git 히스토리를 만들기 위해 커밋 시점의 규칙 검증을 도입</p>
             </section>
 
@@ -553,12 +550,12 @@
                     <h2>도입 배경</h2>
                     <ul class="reflection-list">
                         <li>이전 프로젝트에서 팀원마다 커밋 방식이 달랐음<br> 메시지의 일관성이 떨어져 커밋 히스토리를 관리하는 데 불편함을 겪음</li>
-                        <li>커밋 컨벤션을 문서화하는 것만으로는 일관성을 유지하기 어렵다고 판단<br> 설정을 통해 규칙을 강제할 필요성을 느낌</li>
+                        <li>커밋 컨벤션을 문서화하는 것만으로는 일관성을 유지하기 어렵다고 판단<br> 문서화에 그치지 않고 커밋 단계에서 규칙을 검증할 필요성을 느낌</li>
                     </ul>
                     <h3 class="collaboration-implementation-heading">구현 방법</h3>
                     <ul class="reflection-list">
                         <li>커밋 메시지 컨벤션을 <code>.git/hooks</code> 아래의 <code>commit-msg</code> 파일로 검증하도록 구현</li>
-                        <li>하지만 <code>.git</code>은 저장소 메타데이터 폴더<br>git 버전 관리 대상이 아니므로, hook 스크립트를 커밋해 팀원과 공유할 수 없었음</li>
+                        <li>하지만 <code>.git</code>은 저장소 메타데이터 폴더<br>git 버전 관리 대상이 아니므로, Hook 스크립트를 커밋해 팀원과 공유할 수 없었음</li>
                         <li><code>gitHooks</code> 폴더에 <code>commit-msg</code>를 두고, 프로젝트 실행 시 해당 파일을 <code>.git/hooks/</code>로 복사하는 Gradle Task를 구현</li>
                     </ul>
                 </div>
@@ -573,7 +570,7 @@
                         <button type="button" class="image-zoom" data-zoom-src="../assets/images/ace_gitHook_build_gradle사진.png" data-zoom-alt="gitHook Gradle Task 코드 크게 보기">
                             <img src="../assets/images/ace_gitHook_build_gradle사진.png" alt="gitHook Gradle Task 코드">
                         </button>
-                        <figcaption>hook 설치 Gradle Task</figcaption>
+                        <figcaption>Hook 설치 Gradle Task</figcaption>
                     </figure>
                 </div>
             </section>
@@ -582,11 +579,11 @@
 
             <section class="collaboration-problem">
                 <div>
-                    <h2>[문제] 로컬 hook은 강제력이 부족</h2>
+                    <h2>[문제] 로컬 Git Hook은 강제력이 부족</h2>
                     <ul class="reflection-list">
-                        <li>새 브랜치를 만들 때마다 프로젝트를 실행해야 hook이 설치<br> 팀원이 코드를 1번도 실행하지 않는다면 작동하지 않음</li>
-                        <li><code>git commit --no-verify</code>로 hook을 무시할 수 있음<br> 컨벤션을 지키지 않아도 커밋 가능</li>
-                        <li>PR이 원격 저장소에서 머지될 때는 로컬 hook이 동작하지 않음</li>
+                        <li>저장소를 새로 받은 팀원이 프로젝트를 실행해야만 로컬 Git Hook이 설치됨<br> 팀원이 프로젝트를 한 번도 실행하지 않으면 검증이 동작하지 않음</li>
+                        <li><code>git commit --no-verify</code>로 Git Hook을 무시할 수 있음<br> 컨벤션을 지키지 않아도 커밋 가능</li>
+                        <li>PR이 원격 저장소에서 머지될 때는 로컬 Git Hook이 동작하지 않음</li>
                         <li>결과적으로 PR 머지 시점에는 커밋 메시지가 다시 일관성 없이 남게 됨</li>
                     </ul>
                 </div>
