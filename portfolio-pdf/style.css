@@ -1027,6 +1027,7 @@ dd {
 }
 
 .collaboration-background,
+.collaboration-implementation,
 .collaboration-problem {
     display: grid;
     grid-template-columns: 1fr 64mm;
@@ -1035,27 +1036,15 @@ dd {
 }
 
 .collaboration-background h2,
+.collaboration-implementation h2,
 .collaboration-problem h2,
 .collaboration-next h2 {
     margin-bottom: 2.5mm;
     font-size: 12pt;
 }
 
-.collaboration-implementation-heading {
-    margin: 4mm 0 2.5mm;
-    color: var(--ink);
-    font-size: 12pt;
-    letter-spacing: -0.03em;
-}
-
-.collaboration-implementation-heading::before {
-    display: inline-block;
-    width: 0;
-    height: 10pt;
-    margin-right: 2mm;
-    border-left: 3px solid var(--accent);
-    content: "";
-    vertical-align: -1px;
+.collaboration-background {
+    display: block;
 }
 
 .collaboration-background-images {
@@ -1069,6 +1058,10 @@ dd {
 }
 
 .collaboration-divider {
+    margin: 5mm 0 4mm;
+}
+
+.collaboration-background-divider {
     margin: 5mm 0 4mm;
 }
 
@@ -1346,6 +1339,7 @@ dd {
     .reflection-problem,
     .reflection-solution,
     .collaboration-background,
+    .collaboration-implementation,
     .collaboration-problem,
     .collaboration-next-content,
     .collaboration-next-images {
