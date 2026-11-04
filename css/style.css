@@ -298,7 +298,7 @@ dd {
 
 .skill-list {
     display: grid;
-    gap: 2.8mm;
+    gap: 2.3mm;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -1880,4 +1880,16 @@ dd {
 
 .ubot-stack .ubot-section {
     margin-bottom: 1mm;
+}
+
+/* 기술 스택: 아이콘 배지만 나열 */
+.stack-section .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2mm;
+}
+
+.stack-section .skill-list li {
+    padding-left: 0;
+    border-left: 0;
 }
