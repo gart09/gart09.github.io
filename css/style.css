@@ -1893,3 +1893,7 @@ dd {
     padding-left: 0;
     border-left: 0;
 }
+
+.ubot-page .ubot-arrow {
+    font-weight: 700;
+}

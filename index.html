@@ -157,6 +157,9 @@
                                 <li>
                                     <div><span class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="" class="skill-icon">PostgreSQL</span></div>
                                 </li>
+                                <li>
+                                    <div><span class="skill-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="" class="skill-icon">Redis</span></div>
+                                </li>
                             </ul>
                         </div>
                         <div>
@@ -212,7 +215,7 @@
                 <h2>프로젝트 목표</h2>
                 <ul class="goal-list">
                     <li>FAQ와 질문별 필요한 조회 자료를 근거로 한 AI 답변 제공</li>
-                    <li>답하지 못한 질문과 FAQ 사용 로그를 바탕으로 FAQ를 개선하는 순환 구조 구축</li>
+                    <li>FAQ 사용 로그를 바탕으로 FAQ를 개선하는 순환 구조 구축</li>
                 </ul>
             </section>
 
@@ -222,8 +225,8 @@
                 <h2>내가 기여한 부분</h2>
                 <ul class="ubot-contrib">
                     <li><em>01</em><strong>팀장</strong><span>팀원별 역할 분배 및 일정 관리</span></li>
-                    <li><em>02</em><strong>채팅 RAG 파이프라인</strong><span>검색된 FAQ 답변 중 질문과 유사한 문장만 LLM에 전달하는 답변 문장 필터 구현</span></li>
-                    <li><em>03</em><strong>FAQ 도메인 구축</strong><span>FAQ 등록, 수정, 버전 이력과 임베딩 색인 구현</span></li>
+                    <li><em>02</em><strong>FAQ 도메인 구축</strong><span>FAQ 등록, 수정, 버전 이력과 임베딩 색인 구현</span></li>
+                    <li><em>03</em><strong>채팅 RAG 파이프라인</strong><span>검색된 FAQ 답변 중 질문과 유사한 문장만 LLM에 전달하는 답변 문장 필터 구현</span></li>
                     <li><em>04</em><strong>실시간 FAQ 검색어 랭킹</strong><span>인기, 급상승 FAQ 순위를 집계해 Redis 스냅샷으로 제공</span></li>
                     <li><em>05</em><strong>FAQ 모니터링</strong><span>로그 지표로 개선이 필요한 FAQ를 판정하고 AI 검토와 제외 처리 기능 제공</span></li>
                 </ul>
@@ -243,7 +246,7 @@
                 <h2>획득 역량</h2>
                 <ul class="goal-list">
                     <li>검색, 근거 선별, LLM 응답 생성으로 이어지는 RAG 파이프라인을 설계하고 구축한 역량</li>
-                    <li>LLM의 입력과 출력을 통제해, 검증된 답변만 사용자에게 전달하는 구조를 구현하는 역량</li>
+                    <li>AI 응답을 정해진 형식으로 받아 검증하는 구조를 구축하는 역량</li>
                 </ul>
             </section>
 
@@ -275,8 +278,6 @@
                 <figcaption>답변 문장 필터 구조</figcaption>
             </figure>
 
-            <div class="project-divider reflection-divider" aria-hidden="true"></div>
-
             <section class="ubot-section">
                 <h2>구현 목표</h2>
                 <ul class="ubot-list">
@@ -290,12 +291,12 @@
                 <ul class="ubot-list">
                     <li><strong class="ubot-emph">선택된 FAQ의 답변을 모두 LLM에 전달할 경우, 질문과 무관한 내용까지 함께 전달되는 문제</strong>
                         <ul class="ubot-sublist">
-                            <li>예) "데이터를 다 쓰면 인터넷이 바로 끊기나요?"에 Top-3 FAQ의 답변이 모두 전달됨
+                            <li>예) "휴대폰 요금제는 중간에 바꿔도 되나요?"에 Top-k(검색 결과 상위 k개 FAQ) FAQ의 답변이 모두 전달됨
                                 <ul class="ubot-sublist">
-                                    <li>FAQ 1: 요금제에 따라 차단, 추가 과금, 속도 제한이 될 수 있습니다.</li>
-                                    <li>FAQ 2: 데이터 안심은 기본 데이터 소진 시 데이터를 차단하는 서비스입니다.</li>
-                                    <li>FAQ 3: 데이터 전용 요금제는 20GB 소진 후 1Mbps로 계속 사용할 수 있습니다.</li>
-                                    <li class="ubot-red">LLM 답변: 요금제에 따라 여러 제약이 걸릴 수 있습니다. 데이터 안심은 기본 데이터 소진 시...</li>
+                                    <li>FAQ 1: 요금제를 바꿔도 결합 할인은 유지됩니다. 요금제 변경은 월 1회 가능합니다.</li>
+                                    <li>FAQ 2: 번호이동과 기기 변경을 함께 진행할 수 있습니다.</li>
+                                    <li>FAQ 3: 단말 교체와 선택약정은 별개라 약정을 유지한 채 기기를 바꿀 수 있습니다. 새 단말 할부금은 따로 청구됩니다.</li>
+                                    <li class="ubot-red">LLM 답변: 휴대폰 요금제를 중간에 바꾸는 것은 가능하지만, 월 1회만 가능합니다. 또한, 요금제 변경 시 결합 할인은 유지됩니다. 다만, 요금제 변경이 약정 기간 중이라면 기기 변경과는 별개로 이루어져야 하며, 새 단말의 할부금은 별도로 청구됩니다.<br>→ Top-k FAQ의 답변 전체가 전달되어, 질문과 무관한 새 단말 할부금 내용까지 답변에 포함됨</li>
                                 </ul>
                             </li>
                         </ul>
@@ -350,8 +351,6 @@
                 </div>
             </section>
 
-            <div class="project-divider reflection-divider" aria-hidden="true"></div>
-
             <div class="ubot-stack">
             <section class="ubot-section">
                 <h2>결과</h2>
@@ -362,7 +361,7 @@
             <section class="ubot-section">
                 <h2>한계</h2>
                 <ul class="ubot-list">
-                    <li>FAQ 질문 및 답변 문장 임계값(0.79, 0.49)은 테스트 질문으로 여러 조합을 시도해 정답률이 가장 높은 값으로 선정<br>테스트 질문셋에 맞춘 값이므로 과적합 가능성 존재</li>
+                    <li>FAQ 질문 검색 기준 0.79, 답변 문장 비교 기준 0.49는 테스트 질문으로 여러 조합을 시도해 LLM JUDGE 정답률 지표가 가장 좋은 값으로 선정<br>하지만 테스트 질문셋에 맞춘 값이므로 과적합 가능성 존재</li>
                     <li>이후 FAQ와 파이프라인 변경으로 동일 조건 재현 불가<br>문장 필터 적용 전후를 같은 조건으로 비교하지 못해 개선 정도를 수치로 확인하지 못함</li>
                 </ul>
             </section>
@@ -401,8 +400,6 @@
                 <figcaption>실시간 FAQ 랭킹 구조</figcaption>
             </figure>
 
-            <div class="project-divider reflection-divider" aria-hidden="true"></div>
-
             <section class="ubot-section">
                 <h2>구현 목표</h2>
                 <ul class="ubot-list">
@@ -435,13 +432,13 @@
         <article class="pdf-page ubot-page">
             <header class="ubot-cont-header">
                 <div><span class="eyebrow">PROJECT</span><strong>UBot</strong></div>
-                <p>주요 구현 내용 · 2 · 실시간 FAQ 검색어 랭킹 (인기 / 급상승) (계속)</p>
+                <p>주요 구현 내용 · 2 · 실시간 FAQ 검색어 랭킹 (계속)</p>
             </header>
 
             <section class="ubot-section">
                 <h2>구현 과정</h2>
                 <div class="ubot-step">
-                    <h3><span>01</span>노출 대상 결정</h3>
+                    <h3><span>01</span>자주 묻는 질문의 정의</h3>
                     <dl class="ubot-rows">
                         <div><dt class="cause">쟁점</dt><dd>자주 묻는 질문을 보여 주려면 무엇을 집계 단위로 삼을지 정해야 함</dd></div>
                         <div><dt class="think">고민</dt>
@@ -458,7 +455,7 @@
                     </dl>
                 </div>
                 <div class="ubot-step">
-                    <h3><span>02</span>랭킹 반환 방식 결정</h3>
+                    <h3><span>02</span>랭킹 반환 방식</h3>
                     <dl class="ubot-rows">
                         <div><dt class="cause">쟁점</dt><dd>랭킹을 언제 집계하고 어디에 저장해 반환할지 정해야 함</dd></div>
                         <div><dt class="think">고민</dt>
@@ -480,7 +477,7 @@
                     </dl>
                 </div>
                 <div class="ubot-step ubot-nodash">
-                    <h3><span>03</span>랭킹 순위 왜곡 처리</h3>
+                    <h3><span>03</span>랭킹 순위 왜곡 처리 방식</h3>
                     <div class="ubot-substep">
                         <h4>검색 횟수가 적은 FAQ의 비율이 튀는 현상</h4>
                         <dl class="ubot-rows">
@@ -500,7 +497,7 @@
                         <h4>랭킹에 노출된 FAQ만 선택되는 자기강화</h4>
                         <dl class="ubot-rows">
                             <div><dt class="cause">원인</dt><dd>랭킹에 노출된 FAQ를 선택해 얻은 답변이 다시 사용 기록으로 쌓이면, 노출된 FAQ가 계속 상위에 남음</dd></div>
-                            <div><dt class="solve">해결</dt><dd>랭킹의 FAQ를 선택해 답변을 얻는 경우 FAQ 사용 기록 테이블에 추가하지 않고, 프론트에 답변만 전달</dd></div>
+                            <div><dt class="solve">해결</dt><dd>랭킹의 FAQ를 선택해 답변을 얻는 경우 FAQ 사용 기록 테이블에 추가하지 않고, DB의 FAQ 답변을 바로 프론트에 전달</dd></div>
                         </dl>
                     </div>
                 </div>
@@ -551,8 +548,6 @@
                 <figcaption>FAQ 모니터링 구조</figcaption>
             </figure>
 
-            <div class="project-divider reflection-divider" aria-hidden="true"></div>
-
             <section class="ubot-section">
                 <h2>개요</h2>
                 <ul class="ubot-list">
@@ -561,7 +556,7 @@
                         <ul class="ubot-sublist">
                             <li>검색 품질 낮음(<code>LOW_RAG_QUALITY</code>): 검색 평균 유사도가 낮은 FAQ</li>
                             <li>중복 의심(<code>DUPLICATE_SUSPECTED</code>): FAQ 임베딩 유사도 검색 결과 1위로 선정됐는데, 2위 FAQ와 유사도 차이가 작은 경우가 빈번한 FAQ</li>
-                            <li>사용도 낮음(<code>LOW_USAGE</code>): 현재 버전 기준으로 검색된 적이 없는 FAQ</li>
+                            <li>사용량 낮음(<code>LOW_USAGE</code>): 수정된 지 하루가 지나도 한 번도 검색되지 않은 FAQ</li>
                         </ul>
                     </li>
                 </ul>
@@ -571,7 +566,7 @@
                 <h2>구현 목표</h2>
                 <ul class="ubot-list">
                     <li>1,000건 이상의 FAQ 중 개선 대상을 자동 탐지</li>
-                    <li>AI 검토로 조치 권고와 판정 근거를 관리자 화면에서 제공</li>
+                    <li>AI 검토로 개선이 필요한 FAQ의 조치 권고와 판정 근거를 관리자 화면에서 제공</li>
                 </ul>
             </section>
 
@@ -652,7 +647,7 @@
                                     <li>형식
                                         <ul class="ubot-sublist">
                                             <li>AI가 자유롭게 문장을 쓰지 않고 정해진 JSON 양식으로만 답하게 함</li>
-                                            <li>서버가 해당 JSON을 확인, 결론과 결과가 맞는지 검증 후 실제 보여줄 내용을 조립</li>
+                                            <li>서버가 해당 JSON을 확인, 판정값이 올바른지 검증, 어긋나면 응답 거부</li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -663,7 +658,7 @@
                 <div class="ubot-step">
                     <h3><span>03</span>개선이 필요 없는 FAQ를 목록에서 없애는 기능이 없음</h3>
                     <dl class="ubot-rows">
-                        <div><dt class="cause">원인</dt><dd>제외 기능이 없어 관리자가 판단을 끝낸 FAQ도 매번 노출</dd></div>
+                        <div><dt class="cause">원인</dt><dd>판단을 끝낸 FAQ가 계속 노출되어 매번 다시 검토해야 함</dd></div>
                         <div><dt class="think">고민</dt><dd>FAQ ID로만 제외하면 FAQ를 수정한 뒤에도 계속 숨겨질 수 있음. 제외 기록이 어느 시점의 FAQ에 대한 판단인지 구분할 기준이 필요하다고 판단</dd></div>
                         <div><dt class="solve">해결</dt><dd>제외 단위를 FAQ, 개선 유형, FAQ 버전으로 지정. FAQ를 수정하면 버전이 바뀌어 기존 제외가 적용되지 않으므로 별도 처리 없이 다시 평가</dd></div>
                     </dl>
@@ -683,7 +678,6 @@
                 <h2>한계</h2>
                 <ul class="ubot-list">
                     <li>판정 기준값은 초기값이며 운영 데이터로 조정 필요</li>
-                    <li>버전 시작 시각을 <code>faq.updated_at</code>으로 대용하므로 버전과 무관한 갱신이 있으면 평가 시작점이 밀릴 수 있음</li>
                     <li>AI 검토 프롬프트 변경 효과와 판정 정확도는 정량 검증하지 못함</li>
                 </ul>
             </section>
@@ -1059,109 +1053,7 @@
             </footer>
         </article>
 
-        <article class="pdf-page collaboration-page">
-            <header class="project-page-header implementation-page-header">
-                <div>
-                    <p class="eyebrow">PROJECT</p>
-                    <h1>Ace</h1>
-                    <p class="project-subtitle">선착순 쿠폰 발급 시스템</p>
-                </div>
-            </header>
 
-            <section class="reflection-title collaboration-title">
-                <p class="implementation-kicker">고찰 · 협업 이슈</p>
-                <h2>로컬 Git Hook으로 커밋 메시지 컨벤션 검증</h2>
-                <p class="implementation-subtitle">일관된 Git 히스토리를 만들기 위해 커밋 시점의 규칙 검증을 도입</p>
-            </section>
-
-            <section class="collaboration-background">
-                <div>
-                    <h2>도입 배경</h2>
-                    <ul class="reflection-list">
-                        <li>이전 프로젝트에서 팀원마다 커밋 방식이 달랐음<br> 메시지의 일관성이 떨어져 커밋 히스토리를 관리하는 데 불편함을 겪음</li>
-                        <li>커밋 컨벤션을 문서화하는 것만으로는 일관성을 유지하기 어렵다고 판단<br> 문서화에 그치지 않고 커밋 단계에서 규칙을 검증할 필요성을 느낌</li>
-                    </ul>
-                </div>
-            </section>
-
-            <div class="project-divider collaboration-background-divider" aria-hidden="true"></div>
-
-            <section class="collaboration-implementation">
-                <div>
-                    <h2>구현 방법</h2>
-                    <ul class="reflection-list">
-                        <li>커밋 메시지 컨벤션을 <code>.git/hooks</code> 아래의 <code>commit-msg</code> 파일로 검증하도록 구현</li>
-                        <li>하지만 <code>.git</code>은 저장소 메타데이터 폴더<br>git 버전 관리 대상이 아니므로, Hook 스크립트를 커밋해 팀원과 공유할 수 없었음</li>
-                        <li><code>gitHooks</code> 폴더에 <code>commit-msg</code>를 두고, 프로젝트 실행 시 해당 파일을 <code>.git/hooks/</code>로 복사하는 Gradle Task를 구현</li>
-                    </ul>
-                </div>
-                <div class="collaboration-background-images">
-                    <figure class="project-figure collaboration-figure">
-                        <button type="button" class="image-zoom" data-zoom-src="../assets/images/Ace_gitHook_메시지.png" data-zoom-alt="gitHook 커밋 메시지 검증 화면 크게 보기">
-                            <img src="../assets/images/Ace_gitHook_메시지.png" alt="gitHook 커밋 메시지 검증 화면">
-                        </button>
-                        <figcaption>커밋 메시지 검증</figcaption>
-                    </figure>
-                    <figure class="project-figure collaboration-figure2">
-                        <button type="button" class="image-zoom" data-zoom-src="../assets/images/Ace_gitHook_build_radle.png" data-zoom-alt="gitHook Gradle Task 코드 크게 보기">
-                            <img src="../assets/images/Ace_gitHook_build_radle.png" alt="gitHook Gradle Task 코드">
-                        </button>
-                        <figcaption>Hook 설치 Gradle Task</figcaption>
-                    </figure>
-                </div>
-            </section>
-
-            <div class="project-divider collaboration-divider" aria-hidden="true"></div>
-
-            <section class="collaboration-problem">
-                <div>
-                    <h2>[문제] 로컬 Git Hook은 강제력이 부족</h2>
-                    <ul class="reflection-list">
-                        <li>저장소를 새로 받은 팀원이 프로젝트를 실행해야만 로컬 Git Hook이 설치됨<br> 팀원이 프로젝트를 한 번도 실행하지 않으면 검증이 동작하지 않음</li>
-                        <li><code>git commit --no-verify</code>로 Git Hook을 무시할 수 있음<br> 컨벤션을 지키지 않아도 커밋 가능</li>
-                        <li>PR이 원격 저장소에서 머지될 때는 로컬 Git Hook이 동작하지 않음</li>
-                        <li>결과적으로 PR 머지 시점에는 커밋 메시지가 다시 일관성 없이 남게 됨</li>
-                    </ul>
-                </div>
-                <figure class="project-figure collaboration-pr-figure">
-                    <button type="button" class="image-zoom" data-zoom-src="../assets/images/Ace_도입전_커밋리스트.png" data-zoom-alt="일관되지 않은 PR 커밋 메시지 예시 크게 보기">
-                        <img src="../assets/images/Ace_도입전_커밋리스트.png" alt="일관되지 않은 PR 커밋 메시지 예시">
-                    </button>
-                    <figcaption>일관성 없이 남은 커밋 메시지</figcaption>
-                </figure>
-            </section>
-
-            <div class="project-divider reflection-divider" aria-hidden="true"></div>
-
-            <section class="collaboration-next">
-                <h2>개선 방향</h2>
-                <div class="collaboration-next-content">
-                    <ul class="reflection-list">
-                        <li>로컬이 아닌 원격 저장소에서 규칙을 검증하도록 <code>GitHub Actions</code>를 도입</li>
-                        <li>PR 생성·업데이트 시 커밋 메시지 컨벤션을 검사<br> 검증을 통과한 PR만 머지되도록 구성</li>
-                        <li>현재 진행 중인 프로젝트에도 적용<br>일관된 커밋 메시지가 유지되도록 강제할 수 있었음</li>
-                    </ul>
-                    <div class="collaboration-next-images">
-                        <figure class="project-figure collaboration-action-figure">
-                            <button type="button" class="image-zoom" data-zoom-src="../assets/images/GithubAction_스크립트.png" data-zoom-alt="GitHub Actions 검증 스크립트 크게 보기">
-                                <img src="../assets/images/GithubAction_스크립트.png" alt="GitHub Actions 검증 스크립트">
-                            </button>
-                            <figcaption>GitHub Actions 스크립트</figcaption>
-                        </figure>
-                        <figure class="project-figure collaboration-result-figure">
-                            <button type="button" class="image-zoom" data-zoom-src="../assets/images/GithubAction_도입커밋리스트.png" data-zoom-alt="GitHub Actions 도입 후 커밋 목록 크게 보기">
-                                <img src="../assets/images/GithubAction_도입커밋리스트.png" alt="GitHub Actions 도입 후 커밋 목록">
-                            </button>
-                            <figcaption>현재 프로젝트</figcaption>
-                        </figure>
-                    </div>
-                </div>
-            </section>
-
-            <footer class="page-footer">
-                <span>14</span>
-            </footer>
-        </article>
     </main>
 
     <div id="pdf-image-modal" class="pdf-image-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="이미지 크게 보기">
