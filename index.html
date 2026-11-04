@@ -176,6 +176,521 @@
             </footer>
         </article>
 
+        <!-- ===== UBot ===== -->
+        <article class="pdf-page ubot-page">
+            <header class="project-page-header">
+                <div>
+                    <p class="eyebrow">PROJECT</p>
+                    <h1>UBot</h1>
+                    <p class="project-subtitle">FAQ를 기반으로 답변하는 AI 챗봇 상담 서비스</p>
+                    <div class="tech-tags" aria-label="사용 기술">
+                        <span>Java 21</span><span>Spring Boot</span><span>PostgreSQL (pgvector)</span><span>Redis</span><span>Ollama (bge-m3)</span><span>Docker</span>
+                    </div>
+                </div>
+                <div class="project-header-meta">
+                    <p>2026.09 — 2026.10</p>
+                    <p>백엔드 8명</p>
+                </div>
+            </header>
+
+            <a class="project-github" href="https://github.com/ureca-UBot/UBot-BE" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.46-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.54 1.02 1.54 1.02.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.1-4.56-4.95 0-1.1.4-2 1.03-2.7-.1-.25-.45-1.28.1-2.66 0 0 .84-.27 2.75 1.03a9.58 9.58 0 0 1 5 0c1.9-1.3 2.74-1.03 2.74-1.03.55 1.38.2 2.41.1 2.66.64.7 1.03 1.6 1.03 2.7 0 3.86-2.35 4.7-4.58 4.95.36.3.68.87.68 1.76v2.6c0 .26.18.57.69.48A10 10 0 0 0 12 2Z"/></svg>
+                <span>github.com/ureca-UBot/UBot-BE</span>
+            </a>
+
+            <section class="project-hero">
+                <div class="project-summary">
+                    <h2>프로젝트 소개</h2>
+                    <p>유저의 질문을 받고, 해당 질문과 관련된 FAQ를 근거로 로컬 LLM이 답변을 생성하여 유저에게 반환하는 AI 챗봇 서비스</p>
+                </div>
+            </section>
+
+            <section class="project-goal">
+                <h2>프로젝트 목표</h2>
+                <ul class="goal-list">
+                    <li>FAQ와 질문별 필요한 조회 자료를 근거로 한 AI 답변 제공</li>
+                    <li>답하지 못한 질문과 FAQ 사용 로그를 바탕으로 FAQ를 개선하는 순환 구조 구축</li>
+                </ul>
+            </section>
+
+            <div class="project-divider contribution-divider" aria-hidden="true"></div>
+
+            <section class="contribution-section">
+                <h2>내가 기여한 부분</h2>
+                <ul class="ubot-contrib">
+                    <li><em>01</em><strong>팀장</strong><span>팀원별 역할 분배 및 일정 관리</span></li>
+                    <li><em>02</em><strong>채팅 RAG 파이프라인</strong><span>검색된 FAQ 답변 중 질문과 유사한 문장만 LLM에 전달하는 답변 문장 필터 구현</span></li>
+                    <li><em>03</em><strong>FAQ 도메인 구축</strong><span>FAQ 등록, 수정, 버전 이력과 임베딩 색인 구현</span></li>
+                    <li><em>04</em><strong>실시간 FAQ 검색어 랭킹</strong><span>인기, 급상승 FAQ 순위를 집계해 Redis 스냅샷으로 제공</span></li>
+                    <li><em>05</em><strong>FAQ 모니터링</strong><span>로그 지표로 개선이 필요한 FAQ를 판정하고 AI 검토와 제외 처리 기능 제공</span></li>
+                </ul>
+            </section>
+
+            <div class="project-divider contribution-divider" aria-hidden="true"></div>
+
+            <section class="project-goal">
+                <h2>얻은 경험</h2>
+                <ul class="goal-list">
+                    <li>채팅 RAG 파이프라인 구현 경험</li>
+                    <li>LLM 답변 튜닝 경험</li>
+                </ul>
+            </section>
+
+            <section class="project-goal ubot-skill-section">
+                <h2>획득 역량</h2>
+                <ul class="goal-list">
+                    <li>검색한 FAQ에서 질문과 관련된 근거 문장만 골라 LLM에 전달하는 RAG 파이프라인 설계 및 구현 역량</li>
+                    <li>LLM 출력을 JSON 스키마와 서버 검증으로 확인해 형식 오류를 차단하는 방법 설계 역량</li>
+                </ul>
+            </section>
+
+            <footer class="page-footer">
+                <span>2</span>
+            </footer>
+        </article>
+
+        <!-- UBot 경험 1 : 답변 문장 필터 (A) -->
+        <article class="pdf-page ubot-page">
+            <header class="project-page-header implementation-page-header">
+                <div>
+                    <p class="eyebrow">PROJECT</p>
+                    <h1>UBot</h1>
+                    <p class="project-subtitle">FAQ를 기반으로 답변하는 AI 챗봇 상담 서비스</p>
+                </div>
+            </header>
+
+            <section class="reflection-title">
+                <p class="implementation-kicker">주요 구현 내용 · 1</p>
+                <h2>채팅 RAG 파이프라인: 답변 문장 필터</h2>
+                <p class="implementation-subtitle">로컬 LLM 환경에서 추가 LLM 호출 없이, 검색된 FAQ의 답변 전체가 아니라 질문과 유사한 문장만 LLM에 전달하도록 파이프라인을 설계</p>
+            </section>
+
+            <figure class="project-figure ubot-figure">
+                <button type="button" class="image-zoom" data-zoom-src="../assets/images/UBot_답변문장필터구조.png" data-zoom-alt="UBot 답변 문장 필터 구조 크게 보기">
+                    <img src="../assets/images/UBot_답변문장필터구조.png" alt="UBot 답변 문장 필터 구조">
+                </button>
+                <figcaption>답변 문장 필터 구조</figcaption>
+            </figure>
+
+            <div class="project-divider reflection-divider" aria-hidden="true"></div>
+
+            <section class="ubot-section">
+                <h2>구현 목표</h2>
+                <ul class="ubot-list">
+                    <li>로컬 LLM 환경에서 추가 LLM 호출 없이 질문과 무관한 정보가 LLM 입력에 섞이는 현상 방지</li>
+                    <li>응답속도 및 소모 자원 감소를 위해 LLM 호출을 최대한 하지 않는 방향으로 구현</li>
+                </ul>
+            </section>
+
+            <section class="ubot-section">
+                <h2>문제 상황</h2>
+                <ul class="ubot-list">
+                    <li><strong class="ubot-emph">선택된 FAQ의 답변을 모두 LLM에 전달할 경우, 질문과 무관한 내용까지 함께 전달되는 문제</strong>
+                        <ul class="ubot-sublist">
+                            <li>예) "데이터를 다 쓰면 인터넷이 바로 끊기나요?"에 Top-3 FAQ의 답변이 모두 전달됨
+                                <ul class="ubot-sublist">
+                                    <li>FAQ 1: 요금제에 따라 차단, 추가 과금, 속도 제한이 될 수 있습니다.</li>
+                                    <li>FAQ 2: 데이터 안심은 기본 데이터 소진 시 데이터를 차단하는 서비스입니다.</li>
+                                    <li>FAQ 3: 데이터 전용 요금제는 20GB 소진 후 1Mbps로 계속 사용할 수 있습니다.</li>
+                                    <li class="ubot-red">LLM 답변: 요금제에 따라 여러 제약이 걸릴 수 있습니다. 데이터 안심은 기본 데이터 소진 시...</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <footer class="page-footer">
+                <span>3</span>
+            </footer>
+        </article>
+
+        <!-- UBot 경험 1 (B) -->
+        <article class="pdf-page ubot-page ubot-roomy">
+            <header class="ubot-cont-header">
+                <div><span class="eyebrow">PROJECT</span><strong>UBot</strong></div>
+                <p>주요 구현 내용 · 1 · 채팅 RAG 파이프라인: 답변 문장 필터 (계속)</p>
+            </header>
+
+            <section class="ubot-section">
+                <h2>해결 과정</h2>
+                <div class="ubot-step">
+                    <h3><span>01</span>비교 단위 결정</h3>
+                    <dl class="ubot-rows">
+                        <div><dt class="cause">원인</dt><dd>FAQ 선택은 FAQ 질문 단위로 하는데, LLM에 넘기는 입력은 답변 전체라서 단위가 맞지 않음</dd></div>
+                        <div><dt class="think">고민</dt><dd>질문 단위로 고른 FAQ의 답변에서 질문과 관련 없는 부분을 걸러낼 로직이 필요하다고 판단</dd></div>
+                        <div><dt class="solve">해결</dt><dd>답변을 문장으로 나누고 사용자 질문과 다시 비교해, 관련 있는 문장만 전달</dd></div>
+                    </dl>
+                </div>
+                <div class="ubot-step">
+                    <h3><span>02</span>문장 분리 방식 결정</h3>
+                    <dl class="ubot-rows">
+                        <div><dt class="cause">쟁점</dt><dd>문장으로 나누려면 분리 기준이 필요</dd></div>
+                        <div><dt class="think">고민</dt>
+                            <dd>
+                                <ul class="ubot-sublist">
+                                    <li>LLM으로 문장을 추출하면 LLM 호출이 늘어 구현 목표와 충돌하므로 규칙 기반으로 분리하기로 판단</li>
+                                    <li>다만 마침표 기준으로만 나누면 번호나 글머리 목록이 항목 중간에서 잘려 의미가 깨짐</li>
+                                </ul>
+                            </dd>
+                        </div>
+                        <div><dt class="solve">구현</dt>
+                            <dd>LLM 없이 문장 부호로 나누는 <code>BreakIterator</code>(JDK 기본 문장 분리기) 사용. 목록은 별도 규칙으로 보완
+                                <ul class="ubot-sublist">
+                                    <li>목록은 항목 단위로 묶어 비교, 들여쓴 줄은 직전 항목의 이어지는 내용으로 처리</li>
+                                    <li>안내 문장과 목록 사이에 빈 줄이 있어도 한 묶음으로 처리</li>
+                                    <li>"1.5GB"처럼 숫자 뒤에 공백 없이 이어지는 값은 목록으로 보지 않는 예외 처리</li>
+                                </ul>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </section>
+
+            <div class="project-divider reflection-divider" aria-hidden="true"></div>
+
+            <div class="ubot-stack">
+            <section class="ubot-section">
+                <h2>결과</h2>
+                <ul class="ubot-list">
+                    <li>LLM 호출을 사용하지 않고, LLM에 FAQ 답변 전체가 아닌, 질문과 유사한 문장만 전달</li>
+                </ul>
+            </section>
+            <section class="ubot-section">
+                <h2>한계</h2>
+                <ul class="ubot-list">
+                    <li>FAQ 질문 및 답변 문장 임계값(0.79, 0.49)은 테스트 질문으로 여러 조합을 시도해 정답률이 가장 높은 값으로 선정<br>테스트 질문셋에 맞춘 값이므로 과적합 가능성 존재</li>
+                    <li>이후 FAQ와 파이프라인 변경으로 동일 조건 재현 불가<br>문장 필터 적용 전후를 같은 조건으로 비교하지 못해 개선 정도를 수치로 확인하지 못함</li>
+                </ul>
+            </section>
+            </div>
+
+            <footer class="page-footer">
+                <span>4</span>
+            </footer>
+        </article>
+
+        <!-- UBot 경험 2 : 실시간 FAQ 검색어 랭킹 (A) -->
+        <article class="pdf-page ubot-page">
+            <header class="project-page-header implementation-page-header">
+                <div>
+                    <p class="eyebrow">PROJECT</p>
+                    <h1>UBot</h1>
+                    <p class="project-subtitle">FAQ를 기반으로 답변하는 AI 챗봇 상담 서비스</p>
+                </div>
+            </header>
+
+            <section class="reflection-title">
+                <p class="implementation-kicker">주요 구현 내용 · 2</p>
+                <h2>실시간 FAQ 검색어 랭킹</h2>
+                <p class="implementation-subtitle">사용자 질문의 RAG 검색 결과에 많이 포함된 FAQ를 인기, 급상승 랭킹으로 제공<br>같은 정보가 필요한 사용자가 LLM을 거치지 않고 바로 답변을 받도록 하는 기능</p>
+            </section>
+
+            <ul class="ubot-list ubot-definition">
+                <li><strong>인기 FAQ</strong> 최근 1시간 동안 사용량이 가장 많은 FAQ</li>
+                <li><strong>급상승 FAQ</strong> 이전 2일 동안의 1시간 평균 사용량 대비 최근 1시간 사용량이 5배 이상 급증한 FAQ</li>
+            </ul>
+
+            <figure class="project-figure ubot-figure ubot-figure--wide">
+                <button type="button" class="image-zoom" data-zoom-src="../assets/images/UBot_FAQ랭킹.png" data-zoom-alt="UBot FAQ 랭킹 구조 크게 보기">
+                    <img src="../assets/images/UBot_FAQ랭킹.png" alt="UBot FAQ 랭킹 구조">
+                </button>
+                <figcaption>실시간 FAQ 랭킹 구조</figcaption>
+            </figure>
+
+            <div class="project-divider reflection-divider" aria-hidden="true"></div>
+
+            <section class="ubot-section">
+                <h2>구현 목표</h2>
+                <ul class="ubot-list">
+                    <li>유저들이 채팅에서 자주 묻는 질문의 랭킹 집계 및 표시</li>
+                    <li>랭킹 내 FAQ들의 답변을 바로 받아볼 수 있는 기능 구현</li>
+                </ul>
+            </section>
+
+            <section class="ubot-section">
+                <h2>구현 전 고려사항</h2>
+                <ul class="ubot-list">
+                    <li>자주 묻는 질문의 정의</li>
+                    <li>랭킹 반환 방식</li>
+                    <li>랭킹 순위 왜곡 처리 방식
+                        <ul class="ubot-sublist">
+                            <li>검색 횟수가 적은 FAQ의 비율이 튀는 현상</li>
+                            <li>같은 사용자의 반복 질문</li>
+                            <li>랭킹에 노출된 FAQ만 계속 선택되는 자기강화</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <footer class="page-footer">
+                <span>5</span>
+            </footer>
+        </article>
+
+        <!-- UBot 경험 2 (B) -->
+        <article class="pdf-page ubot-page">
+            <header class="ubot-cont-header">
+                <div><span class="eyebrow">PROJECT</span><strong>UBot</strong></div>
+                <p>주요 구현 내용 · 2 · 실시간 FAQ 검색어 랭킹 (인기 / 급상승) (계속)</p>
+            </header>
+
+            <section class="ubot-section">
+                <h2>구현 과정</h2>
+                <div class="ubot-step">
+                    <h3><span>01</span>노출 대상 결정</h3>
+                    <dl class="ubot-rows">
+                        <div><dt class="cause">쟁점</dt><dd>자주 묻는 질문을 보여 주려면 무엇을 집계 단위로 삼을지 정해야 함</dd></div>
+                        <div><dt class="think">고민</dt>
+                            <dd>
+                                <ul class="ubot-sublist">
+                                    <li>가장 좋은 방법은 실제 유저 질문을 클러스터링해 순위대로 보여 주는 것</li>
+                                    <li>유저 질문은 표현과 세부 정보가 제각각이라 하나의 답변으로 묶어 보여 주기 어렵다고 판단</li>
+                                    <li>묶은 질문의 내용과 답변을 가공하는 과정에서 LLM이 빈번하게 호출될 것으로 판단</li>
+                                    <li>결론적으로 빠른 답변이라는 랭킹의 목적을 달성할 수 없다고 판단</li>
+                                </ul>
+                            </dd>
+                        </div>
+                        <div><dt class="solve">구현</dt><dd>질문 검색에 사용된 FAQ의 순위와 해당 FAQ의 답변을 반환. 질문을 직접 묶지는 않지만, 원하는 FAQ가 있는 유저의 요구를 간접적으로 충족</dd></div>
+                    </dl>
+                </div>
+                <div class="ubot-step">
+                    <h3><span>02</span>랭킹 반환 방식 결정</h3>
+                    <dl class="ubot-rows">
+                        <div><dt class="cause">쟁점</dt><dd>랭킹을 언제 집계하고 어디에 저장해 반환할지 정해야 함</dd></div>
+                        <div><dt class="think">고민</dt>
+                            <dd>
+                                <ul class="ubot-sublist">
+                                    <li>랭킹은 1초, 0.1초 단위 갱신이 필요하지 않은 작업이므로, 요청마다 매번 집계할 필요가 없다고 판단</li>
+                                    <li>개발 당시에는 단일 인스턴스였으나 다중 인스턴스로 확장될 가능성이 있어, 서버 메모리에 저장하면 인스턴스마다 결과가 달라질 수 있다고 판단</li>
+                                </ul>
+                            </dd>
+                        </div>
+                        <div><dt class="solve">구현</dt>
+                            <dd>
+                                <ul class="ubot-sublist">
+                                    <li>스케줄러가 1분마다 랭킹을 한 번에 계산해 Redis에 Top 5 스냅샷으로 저장. 엔드포인트는 Redis의 값만 조회</li>
+                                    <li>스케줄러에 <code>ShedLock</code>을 적용해 여러 인스턴스에서 동시에 실행되는 것을 방지</li>
+                                </ul>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="ubot-step ubot-nodash">
+                    <h3><span>03</span>랭킹 순위 왜곡 처리</h3>
+                    <div class="ubot-substep">
+                        <h4>검색 횟수가 적은 FAQ의 비율이 튀는 현상</h4>
+                        <dl class="ubot-rows">
+                            <div><dt class="cause">원인</dt><dd>평소 1건이던 FAQ가 5건이 되면 5배지만 의미 있는 급상승은 아님</dd></div>
+                            <div><dt class="solve">해결</dt><dd>현재 윈도우의 최소 검색 횟수와 기준 기간의 최소 표본 수를 지정해, 건수가 아주 작은 경우 배제</dd></div>
+                        </dl>
+                    </div>
+                    <div class="ubot-substep">
+                        <h4>같은 사용자의 반복 질문</h4>
+                        <dl class="ubot-rows">
+                            <div><dt class="cause">쟁점</dt><dd>한 사용자가 같은 질문을 반복해 의도적으로 FAQ 순위를 조작할 수 있음</dd></div>
+                            <div><dt class="think">고민</dt><dd>같은 FAQ가 선택됐다는 이유로 중복 처리하면 정상 질문까지 제외될 수 있음. 표현이 달라도 같은 FAQ가 Top-k로 선택될 수 있기 때문. 따라서 같은 사용자의 같은 질문만 집계에서 제외하도록 결정</dd></div>
+                            <div><dt class="solve">구현</dt><dd>같은 질문으로 인한 왜곡을 막기 위해 질문을 정규화해 테이블에 저장. 랭킹 집계 윈도우(기본값 1시간) 안에 같은 정규화 질문과 같은 <code>userId</code>가 이미 있으면 랭킹에서 제외</dd></div>
+                        </dl>
+                    </div>
+                    <div class="ubot-substep">
+                        <h4>랭킹에 노출된 FAQ만 선택되는 자기강화</h4>
+                        <dl class="ubot-rows">
+                            <div><dt class="cause">원인</dt><dd>랭킹에 노출된 FAQ를 선택해 얻은 답변이 다시 사용 기록으로 쌓이면, 노출된 FAQ가 계속 상위에 남음</dd></div>
+                            <div><dt class="solve">해결</dt><dd>랭킹의 FAQ를 선택해 답변을 얻는 경우 FAQ 사용 기록 테이블에 추가하지 않고, 프론트에 답변만 전달</dd></div>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+
+            <div class="ubot-stack">
+            <section class="ubot-section">
+                <h2>결과</h2>
+                <ul class="ubot-list">
+                    <li>API는 Redis만 조회. 프론트는 <code>GET /rankings</code> 한 번으로 인기, 급상승 정보를 모두 조회 가능</li>
+                    <li>모든 인스턴스가 같은 랭킹 공유</li>
+                </ul>
+            </section>
+            <section class="ubot-section">
+                <h2>한계</h2>
+                <ul class="ubot-list">
+                    <li>임계값(최소 검색 횟수, 판정 배수 등)은 초기값이므로 실제 트래픽을 기준으로 한 조정 필요</li>
+                    <li>랭킹 도입 후 LLM 호출 감소량과 응답 시간 단축 효과는 정량 측정하지 못함</li>
+                </ul>
+            </section>
+            </div>
+
+            <footer class="page-footer">
+                <span>6</span>
+            </footer>
+        </article>
+
+        <!-- UBot 경험 3 : FAQ 모니터링 (A) -->
+        <article class="pdf-page ubot-page">
+            <header class="project-page-header implementation-page-header">
+                <div>
+                    <p class="eyebrow">PROJECT</p>
+                    <h1>UBot</h1>
+                    <p class="project-subtitle">FAQ를 기반으로 답변하는 AI 챗봇 상담 서비스</p>
+                </div>
+            </header>
+
+            <section class="reflection-title">
+                <p class="implementation-kicker">주요 구현 내용 · 3</p>
+                <h2>FAQ 모니터링: 개선이 필요한 FAQ 탐지</h2>
+                <p class="implementation-subtitle">로그 지표로 개선이 필요한 FAQ를 목록화하고, 관리자가 확인해 개선할 수 있는 FAQ 품질 관리 대시보드</p>
+            </section>
+
+            <figure class="project-figure ubot-figure ubot-figure--wide">
+                <button type="button" class="image-zoom" data-zoom-src="../assets/images/UBot_faq모니터링.png" data-zoom-alt="UBot FAQ 모니터링 구조 크게 보기">
+                    <img src="../assets/images/UBot_faq모니터링.png" alt="UBot FAQ 모니터링 구조">
+                </button>
+                <figcaption>FAQ 모니터링 구조</figcaption>
+            </figure>
+
+            <div class="project-divider reflection-divider" aria-hidden="true"></div>
+
+            <section class="ubot-section">
+                <h2>개요</h2>
+                <ul class="ubot-list">
+                    <li>FAQ의 현재 버전 사용 로그를 바탕으로 품질이 낮은 FAQ들을 목록화하고, 필요한 경우 관리자에게 조치 방법을 권유하는 기능</li>
+                    <li>개선 항목 유형
+                        <ul class="ubot-sublist">
+                            <li>검색 품질 낮음(<code>LOW_RAG_QUALITY</code>): 검색 평균 유사도가 낮은 FAQ</li>
+                            <li>중복 의심(<code>DUPLICATE_SUSPECTED</code>): FAQ 임베딩 유사도 검색 결과 1위로 선정됐는데, 2위 FAQ와 유사도 차이가 작은 경우가 빈번한 FAQ</li>
+                            <li>사용도 낮음(<code>LOW_USAGE</code>): 현재 버전 기준으로 검색된 적이 없는 FAQ</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="ubot-section">
+                <h2>구현 목표</h2>
+                <ul class="ubot-list">
+                    <li>1,000건 이상의 FAQ 중 개선 대상을 자동 탐지</li>
+                    <li>AI 검토로 조치 권고와 판정 근거를 관리자 화면에서 제공</li>
+                </ul>
+            </section>
+
+            <section class="ubot-section">
+                <h2>문제 상황</h2>
+                <ul class="ubot-list">
+                    <li>수정 후 한 번도 검색되지 않은 FAQ가 "사용량 낮음"으로 잡히지 않는 현상</li>
+                    <li>AI 검토 결과의 판단과 근거가 일관되지 않는 현상</li>
+                    <li>개선이 필요 없는 FAQ를 목록에서 없애는 기능이 없음</li>
+                </ul>
+            </section>
+
+            <footer class="page-footer">
+                <span>7</span>
+            </footer>
+        </article>
+
+        <!-- UBot 경험 3 (B) -->
+        <article class="pdf-page ubot-page">
+            <header class="ubot-cont-header">
+                <div><span class="eyebrow">PROJECT</span><strong>UBot</strong></div>
+                <p>주요 구현 내용 · 3 · FAQ 모니터링: 개선이 필요한 FAQ 탐지 (계속)</p>
+            </header>
+
+            <section class="ubot-section">
+                <h2>해결 과정</h2>
+                <div class="ubot-step">
+                    <h3><span>01</span>수정 후 한 번도 검색되지 않은 FAQ가 "사용량 낮음"으로 잡히지 않는 현상</h3>
+                    <dl class="ubot-rows">
+                        <div><dt class="cause">원인</dt>
+                            <dd>
+                                <ul class="ubot-sublist">
+                                    <li>수정 전 로그를 빼려고 "수정 후 로그만" 조회했는데, 수정 후 로그가 없는 FAQ는 조회 결과에서 아예 사라짐</li>
+                                    <li>"사용 0건"이어야 잡히는 FAQ가 집계 대상에서 빠진 것</li>
+                                </ul>
+                           </dd>
+                        </div>
+                        <div><dt class="think">고민</dt>
+                            <dd>
+                                <ul class="ubot-sublist">
+                                    <li>조건을 아예 없애면 수정 전 로그까지 세게 되어, 이미 고친 FAQ가 계속 목록에 등장</li>
+                                    <li>수정 전 로그는 빼면서도, 로그가 없는 FAQ는 남겨야 했음</li>
+                                </ul>
+                            </dd>
+                        </div>
+                        <div><dt class="solve">해결</dt>
+                            <dd>
+                                <ul class="ubot-sublist">
+                                    <li>FAQ를 먼저 가져오고, 그 FAQ에 수정 후 로그를 <code>LEFT JOIN</code>으로 합치는 방식으로 변경</li>
+                                    <li>수정 후 사용 로그가 없는 FAQ도 0건으로 남아 "사용량 낮음"으로 판정됨</li>
+                                </ul>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="ubot-step">
+                    <h3><span>02</span>AI 검토 결과의 판단과 근거가 일관되지 않는 현상</h3>
+                    <dl class="ubot-rows">
+                        <div><dt class="cause">원인</dt><dd>AI가 자유롭게 서술하는 응답을 받아, 판단 결과와 조치 권고가 서로 어긋날 수 있고 형식도 응답마다 달라질 수 있는 구조</dd></div>
+                        <div><dt class="think">고민</dt>
+                            <dd>
+                                <ul class="ubot-sublist">
+                                    <li>프롬프트 문장을 더 정교하게 다듬는 방법과 응답 구조를 강제하는 방법을 비교</li>
+                                    <li>문장 지시는 모델이 어길 수 있고, 어겼는지 서버가 확인할 수단이 없다고 판단</li>
+                                    <li>무엇을 판단할지(내용)는 프롬프트로 정하고, 어떤 모양으로 답할지(형식)는 서버 검증으로 보장하도록 역할을 나눔</li>
+                                </ul>
+                            </dd>
+                        </div>
+                        <div><dt class="solve">해결</dt>
+                            <dd>
+                                <ul class="ubot-sublist">
+                                    <li>내용
+                                        <ul class="ubot-sublist">
+                                            <li>프롬프트에 판정 기준(중복, 구분 필요, 중복 아님, 근거 부족)을 명시하고 판정별 조치 규칙을 강제</li>
+                                            <li>판단 근거의 결론이 판단 결과와 같아야 한다는 규칙을 명시</li>
+                                        </ul>
+                                    </li>
+                                    <li>형식
+                                        <ul class="ubot-sublist">
+                                            <li>AI가 자유롭게 문장을 쓰지 않고 정해진 JSON 양식으로만 답하게 함</li>
+                                            <li>서버가 해당 JSON을 확인, 결론과 결과가 맞는지 검증 후 실제 보여줄 내용을 조립</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="ubot-step">
+                    <h3><span>03</span>개선이 필요 없는 FAQ를 목록에서 없애는 기능이 없음</h3>
+                    <dl class="ubot-rows">
+                        <div><dt class="cause">원인</dt><dd>제외 기능이 없어 관리자가 판단을 끝낸 FAQ도 매번 노출</dd></div>
+                        <div><dt class="think">고민</dt><dd>FAQ ID로만 제외하면 FAQ를 수정한 뒤에도 계속 숨겨질 수 있음. 제외 기록이 어느 시점의 FAQ에 대한 판단인지 구분할 기준이 필요하다고 판단</dd></div>
+                        <div><dt class="solve">해결</dt><dd>제외 단위를 FAQ, 개선 유형, FAQ 버전으로 지정. FAQ를 수정하면 버전이 바뀌어 기존 제외가 적용되지 않으므로 별도 처리 없이 다시 평가</dd></div>
+                    </dl>
+                </div>
+            </section>
+
+            <div class="ubot-stack">
+            <section class="ubot-section">
+                <h2>결과</h2>
+                <ul class="ubot-list">
+                    <li>SQL 쿼리 한 번으로 개선 유형 판정, 제외 적용, 정렬, 페이지네이션을 수행</li>
+                    <li>판단 근거와 판단 결과의 일치는 프롬프트 규칙으로 유도</li>
+                    <li>AI 검토 응답의 형식 오류는 JSON 스키마와 서버 검증으로 차단</li>
+                </ul>
+            </section>
+            <section class="ubot-section">
+                <h2>한계</h2>
+                <ul class="ubot-list">
+                    <li>판정 기준값은 초기값이며 운영 데이터로 조정 필요</li>
+                    <li>버전 시작 시각을 <code>faq.updated_at</code>으로 대용하므로 버전과 무관한 갱신이 있으면 평가 시작점이 밀릴 수 있음</li>
+                    <li>AI 검토 프롬프트 변경 효과와 판정 정확도는 정량 검증하지 못함</li>
+                </ul>
+            </section>
+            </div>
+
+            <footer class="page-footer">
+                <span>8</span>
+            </footer>
+        </article>
+
         <article class="pdf-page ace-page">
             <header class="project-page-header">
                 <div>
@@ -243,7 +758,7 @@
             </section>
 
             <footer class="page-footer">
-                <span>2</span>
+                <span>9</span>
             </footer>
         </article>
 
@@ -277,7 +792,7 @@
             </section>
 
             <footer class="page-footer">
-                <span>3</span>
+                <span>10</span>
             </footer>
         </article>
 
@@ -383,7 +898,7 @@
             </section>
 
             <footer class="page-footer">
-                <span>4</span>
+                <span>11</span>
             </footer>
         </article>
 
@@ -468,7 +983,7 @@
             </section>
 
             <footer class="page-footer">
-                <span>5</span>
+                <span>12</span>
             </footer>
         </article>
 
@@ -537,7 +1052,7 @@
             </section>
 
             <footer class="page-footer">
-                <span>6</span>
+                <span>13</span>
             </footer>
         </article>
 
@@ -641,7 +1156,7 @@
             </section>
 
             <footer class="page-footer">
-                <span>7</span>
+                <span>14</span>
             </footer>
         </article>
     </main>
