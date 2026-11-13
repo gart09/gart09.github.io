@@ -1997,3 +1997,55 @@ dd {
 .ubot-page .project-summary > p {
     margin-bottom: 0;
 }
+
+.ace-main-figure {
+    width: 78%;
+    margin: 0 auto 4mm;
+}
+
+.ace-main-figure {
+    width: 78%;
+    margin: 0 auto 4mm;
+}
+
+.ace-page .project-github {
+    margin-bottom: 4mm;
+}
+
+.ace-page .project-github {
+    margin-top: 0;
+    margin-bottom: 3mm;
+}
+
+.ace-page .project-goal,
+.ace-page .contribution-section {
+    margin-top: 4mm;
+}
+
+.ace-page .project-hero {
+    padding: 0;
+}
+
+.ace-page .project-summary > p {
+    margin-bottom: 0;
+}
+
+/* 노션 인라인 코드 스타일 */
+.pdf-page code {
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    background: rgb(135 131 120 / 15%);
+    color: #eb5757;
+    font-family: "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 85%;
+    font-weight: 400;
+    letter-spacing: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+.ace-fig-batch {
+    width: 64%;
+    margin-right: auto;
+    margin-left: auto;
+}

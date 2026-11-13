@@ -191,7 +191,7 @@
                     <p class="project-subtitle">FAQ를 기반으로 답변하는 AI 챗봇 상담 서비스</p>
                 </div>
                 <div class="project-header-meta">
-                    <p>2026.09 — 2026.10</p>
+                    <p>2026.09.09 — 2026.10.27</p>
                 </div>
             </header>
 
@@ -319,7 +319,7 @@
             <section class="ubot-section">
                 <h2>결과</h2>
                 <ul class="ubot-list">
-                    <li>LLM 호출을 사용하지 않고, LLM에 FAQ 답변 전체가 아닌, 질문과 유사한 문장만 전달</li>
+                    <li>LLM 호출을 사용하지 않고, LLM에 FAQ 답변 전체가 아닌 질문과 유사한 문장만 전달</li>
                 </ul>
             </section>
 
@@ -490,7 +490,7 @@
             </footer>
         </article>
 
-                <article class="pdf-page ace-page">
+                <article class="pdf-page ace-page ubot-page">
             <header class="project-page-header">
                 <div>
                     <p class="eyebrow">PROJECT</p>
@@ -501,27 +501,26 @@
                     </div>
                 </div>
                 <div class="project-header-meta">
-                    <p class="project-award">LG유플러스 유레카 종합 프로젝트 최우수상</p>
                     <p>2026.08.06 — 2026.08.31</p>
                 </div>
             </header>
 
-            <figure class="project-figure screenshot-figure">
-                <button type="button" class="image-zoom" data-zoom-src="../assets/images/Ace_예시화면%20.png" data-zoom-alt="Ace 정합성 리포트 화면 크게 보기">
-                    <img src="../assets/images/Ace_예시화면%20.png" alt="Ace 정합성 리포트 화면">
-                </button>
-            </figure>
             <a class="project-github" href="https://github.com/URECA-Ace" target="_blank" rel="noopener noreferrer">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.46-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.54 1.02 1.54 1.02.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.1-4.56-4.95 0-1.1.4-2 1.03-2.7-.1-.25-.45-1.28.1-2.66 0 0 .84-.27 2.75 1.03a9.58 9.58 0 0 1 5 0c1.9-1.3 2.74-1.03 2.74-1.03.55 1.38.2 2.41.1 2.66.64.7 1.03 1.6 1.03 2.7 0 3.86-2.35 4.7-4.58 4.95.36.3.68.87.68 1.76v2.6c0 .26.18.57.69.48A10 10 0 0 0 12 2Z"/></svg>
                 <span>github.com/URECA-Ace</span>
             </a>
+
+            <figure class="project-figure screenshot-figure ace-main-figure">
+                <button type="button" class="image-zoom" data-zoom-src="../assets/images/Ace_예시화면%20.png" data-zoom-alt="Ace 정합성 리포트 화면 크게 보기">
+                    <img src="../assets/images/Ace_예시화면%20.png" alt="Ace 정합성 리포트 화면">
+                </button>
+            </figure>
 
             <section class="project-hero">
                 <div class="project-summary">
                     <h2>프로젝트 소개</h2>
                     <p>대규모 동시 요청에서도 안정적인 쿠폰 발급과 사후 데이터 검증·복구를 지원하는 선착순 쿠폰 발급 시스템</p>
                 </div>
-                <div class="project-divider contribution-divider" aria-hidden="true"></div>
             </section>
 
             <section class="project-goal">
@@ -532,28 +531,30 @@
                 </ul>
             </section>
 
-            <div class="project-divider contribution-divider" aria-hidden="true"></div>
-
             <section class="contribution-section">
                 <h2>내가 기여한 부분</h2>
-                <div class="contribution-grid">
-                    <article class="contribution-card">
-                        <h3>협업을 위한 기초 인프라 환경 조성</h3>
-                        <p><code>ISSUE/PR 템플릿</code>, <code>Git Hook</code>, <code>Docker Compose</code> 등 <br>협업에 필요한 기초 인프라 환경을 조성</p>
-                    </article>
-                    <article class="contribution-card">
-                        <h3>정합성 검증 공통 로직 구현</h3>
-                        <p>정합성 검증 공통 인터페이스와 실행 파이프라인을 구현<br> 재고 정합성 검증을 레퍼런스로 구현<br>팀원들이 동일한 구조로 검증 로직을 개발할 수 있도록 함</p>
-                    </article>
-                    <article class="contribution-card">
-                        <h3><code>Spring Batch</code>를 활용한 비동기 검증 파이프라인 구현</h3>
-                        <p>대규모 데이터 정합성 검증을 청크 단위로 처리<br> 실패 시 중단 지점부터 재개할 수 있는 비동기 파이프라인을 구현</p>
-                    </article>
-                    <article class="contribution-card">
-                        <h3>정합성 위반 건 복구 정책 공통 로직 구현</h3>
-                        <p>정합성 복구 정책 공통 인터페이스와 실행·이력 저장·재검증 파이프라인을 구현<br> 관리자 확인 후 필요한 복구 수행<br>재고 정합성 검증 위반 복구 정책을 레퍼런스로 제공</p>
-                    </article>
-                </div>
+                <ul class="goal-list">
+                    <li>협업을 위한 기초 인프라 환경 조성</li>
+                    <li>정합성 검증 공통 로직 구현</li>
+                    <li><code>Spring Batch</code>를 활용한 비동기 검증 파이프라인 구현</li>
+                    <li>정합성 위반 건 복구 정책 공통 로직 구현</li>
+                </ul>
+            </section>
+
+            <section class="project-goal">
+                <h2>얻은 경험</h2>
+                <ul class="goal-list">
+                    <li><code>Spring Batch</code>로 대규모 데이터를 청크 단위로 처리하는 비동기 검증 파이프라인 구현 경험</li>
+                    <li>정합성 위반 건을 검증하고 복구하는 정책 구조 구현 경험</li>
+                </ul>
+            </section>
+
+            <section class="project-goal">
+                <h2>획득 역량</h2>
+                <ul class="goal-list">
+                    <li>팀원이 같은 구조로 개발할 수 있도록 공통 인터페이스와 실행 파이프라인을 설계하는 역량</li>
+                    <li>실패 시 중단 지점부터 재개할 수 있는 배치 처리 구조를 구축하는 역량</li>
+                </ul>
             </section>
 
             <footer class="page-footer">
@@ -561,33 +562,93 @@
             </footer>
         </article>
 
-        <article class="pdf-page design-page">
-            <header class="project-page-header design-page-header">
-                <div>
-                    <p class="eyebrow">PROJECT</p>
-                    <h1>Ace</h1>
-                    <p class="project-subtitle">선착순 쿠폰 발급 시스템</p>
-                </div>
-            </header>
-
-            <section class="design-section">
-                <h2>프로젝트 아키텍처</h2>
-                <figure class="project-figure design-figure">
-                    <button type="button" class="image-zoom" data-zoom-src="../assets/images/Ace_아키텍처.png" data-zoom-alt="Ace 프로젝트 아키텍처 크게 보기">
-                        <img src="../assets/images/Ace_아키텍처.png" alt="Ace 프로젝트 아키텍처 다이어그램">
-                    </button>
-                </figure>
+        <article class="pdf-page ubot-page">
+            <section class="reflection-title">
+                <p class="ubot-crumb">Ace · 문제해결과정 1</p>
+                <h2>정합성 검증 과정에 Spring Batch 도입</h2>
+                <p class="implementation-subtitle ubot-subtitle-sm">대량 데이터 검증을 요청과 분리해 비동기로 처리하고, 실패 시 중단 지점부터 재개할 수 있는 구조로 설계</p>
             </section>
 
-            <div class="project-divider design-divider" aria-hidden="true"></div>
+            <figure class="project-figure ubot-figure ubot-figure--wide ace-fig-batch">
+                <button type="button" class="image-zoom" data-zoom-src="../assets/images/Ace_SpringBatch도입.png" data-zoom-alt="Ace 정합성 검증 Spring Batch 구조 크게 보기">
+                    <img src="../assets/images/Ace_SpringBatch도입.png" alt="Ace 정합성 검증 Spring Batch 구조">
+                </button>
+            </figure>
 
-            <section class="design-section">
-                <h2>ERD</h2>
-                <figure class="project-figure design-figure">
-                    <button type="button" class="image-zoom" data-zoom-src="../assets/images/Ace_erd.png" data-zoom-alt="Ace ERD 크게 보기">
-                        <img src="../assets/images/Ace_erd.png" alt="Ace ERD">
-                    </button>
-                </figure>
+            <section class="ubot-section">
+                <h2>문제 상황</h2>
+                <ul class="ubot-list">
+                    <li>대량(300만건 가량)의 데이터 정합성 검증이 오래 걸려, 요청이 끝날 때까지 대기하는 문제
+                        <ul class="ubot-sublist">
+                            <li>데이터 정합성 검증: 선착순 쿠폰 발급 후 DB와 Redis의 데이터가 서로 맞는지 사후에 검사하는 기능<br>(예: 재고 수량 일치, Redis와 DB 간 데이터 유실, 쿠폰 상태 전이 오류)</li>
+                        </ul>
+                    </li>
+                    <li>검증 도중 오류가 발생하면 처음부터 다시 실행해야 하는 문제</li>
+                </ul>
+            </section>
+
+            <section class="ubot-section">
+                <h2>해결 과정</h2>
+                <ul class="ubot-list">
+                    <li><strong>대량(300만건 가량)의 데이터 정합성 검증이 오래 걸려, 요청이 끝날 때까지 대기하는 문제</strong>
+                        <ul class="ubot-sublist">
+                            <li><strong>원인</strong>
+                                <ul class="ubot-sublist">
+                                    <li>검증 요청과 검증 실행이 한 흐름에 묶여 있어, 실행이 끝날 때까지 요청이 대기해야 함</li>
+                                </ul>
+                            </li>
+                            <li><strong>해결</strong>
+                                <ul class="ubot-sublist">
+                                    <li>요청과 검증 실행을 분리하고 <code>Spring Batch</code>를 사용한 <code>Job</code>으로 처리</li>
+                                    <li><code>BatchJobFactory</code>가 요청받은 검증 1개당 1개의 <code>Step</code>으로 동적으로 조립해 <code>Job</code>을 구성 </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>검증 도중 오류가 발생하면 처음부터 다시 실행해야 하는 문제</strong>
+                        <ul class="ubot-sublist">
+                            <li><strong>원인</strong>
+                                <ul class="ubot-sublist">
+                                    <li>수백만 건을 한 번에 읽고 처리하는 과정 중간에 실패했을 때 처음부터 다시 시작해야 함</li>
+                                </ul>
+                            </li>
+                            <li><strong>해결</strong>
+                                <ul class="ubot-sublist">
+                                    <li>Spring Batch Step의 Reader, Processor, Writer가 각자 진행 지점을 저장하도록 구성해, 실패 시 중단된 지점부터 재시작
+                                        <ul class="ubot-list">
+                                            <li><code>EventIdPageReader</code> (읽기)
+                                                <ul class="ubot-sublist">
+                                                    <li>검증 대상인 <code>coupon_event</code>(쿠폰 발급 기록 테이블)를 청크 단위로 조회</li>
+                                                    <li><code>ItemStream</code>으로 검증을 진행한 마지막 <code>coupon_event_id</code>를 저장해, 재시작 시 해당 지점부터 이어서 읽음</li>
+                                                </ul>
+                                            </li>
+                                            <li><code>ConsistencyCheckItemProcessor</code> (검증)
+                                                <ul class="ubot-sublist">
+                                                    <li>Reader가 읽은 페이지 단위로 검증을 실행</li>
+                                                    <li>오류가 발생하면 커밋된 페이지 이후부터 재실행</li>
+                                                </ul>
+                                            </li>
+                                            <li><code>CheckResultAccumulatorWriter</code> (결과 누적 저장)
+                                                <ul class="ubot-sublist">
+                                                    <li>페이지별 위반 건을 즉시 저장</li>
+                                                    <li>누적 위반 건수도 <code>ItemStream</code>으로 보존해, 재시작 후에도 이전 집계 유지</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="ubot-section">
+                <h2>결과</h2>
+                <ul class="ubot-list">
+                    <li>검증 요청과 실행이 분리되어, 수백만 건 검증도 Job으로 비동기 처리</li>
+                    <li>실패 시 처음부터가 아니라 중단된 지점부터 재개 가능</li>
+                </ul>
             </section>
 
             <footer class="page-footer">
@@ -595,267 +656,66 @@
             </footer>
         </article>
 
-        <article class="pdf-page implementation-page">
-            <header class="project-page-header implementation-page-header">
-                <div>
-                    <p class="eyebrow">PROJECT</p>
-                    <h1>Ace</h1>
-                    <p class="project-subtitle">선착순 쿠폰 발급 시스템</p>
-                </div>
-            </header>
+        <article class="pdf-page ubot-page">
+            <section class="reflection-title">
+                <p class="ubot-crumb">Ace · 문제해결과정 2</p>
+                <h2>위반 건수가 많아지면 검증 결과 저장이 통째로 실패</h2>
+                <p class="implementation-subtitle ubot-subtitle-sm">대량의 위반 데이터를 하나의 컬럼에 저장하며 발생한 MySQL 정렬 메모리 오류</p>
+            </section>
 
-            <section class="implementation-hero">
-                <div class="implementation-hero-copy">
-                    <div class="implementation-title">
-                        <p class="implementation-kicker">주요 구현 내용</p>
-                        <h2>정합성 검증 파이프라인</h2>
-                        <p class="implementation-subtitle">공통 인터페이스와 Spring Batch 기반 비동기 검증 구조</p>
-                    </div>
-                    <div class="implementation-intro">
-                        <ul class="common-context-list">
-                            <li>3명의 팀원이 정합성 검증 파트를 담당<br>
-                                일관된 구조로 개발할 수 있도록 공통 인터페이스 설계</li>
-                            <li>프로젝트가 완성되지 않은 시점<br>
-                                정합성 검증의 호출 위치와 실행 시점이 확정되지 않은 상태</li>
-                            <li>코드 구현과 실행 시점을 분리<br>
-                                <code>Runner</code>에 필요한 매개변수를 전달하면 해당 검증 로직이 실행되도록 구현</li>
+            <figure class="project-figure ubot-figure ubot-figure--wide">
+                <button type="button" class="image-zoom" data-zoom-src="../assets/images/Ace_위반건수.png" data-zoom-alt="Ace 위반 건수 증가 시 저장 실패 구조 크게 보기">
+                    <img src="../assets/images/Ace_위반건수.png" alt="Ace 위반 건수 증가 시 저장 실패 구조">
+                </button>
+            </figure>
+
+            <section class="ubot-section">
+                <h2>문제 상황</h2>
+                <ul class="ubot-list">
+                    <li>위반 건수가 많아지면 검증 결과 저장이 통째로 실패하는 문제
+                        <ul class="ubot-sublist">
+                            <li>테스트 중 Redis와 로컬 환경의 시계가 어긋나면서 정상 데이터가 대량 위반으로 판정되어, 위반 1만 건이 한 번에 쌓이는 상황 발생</li>
+                            <li>MySQL에서 <code>Out of sort memory</code> 오류가 발생해 검증 결과 저장이 실패</li>
                         </ul>
-                    </div>
-                </div>
-                <figure class="project-figure verification-figure title-flow-figure">
-                    <button type="button" class="image-zoom" data-zoom-src="../assets/images/Ace_정합성검증_시퀀스다이어그램.png" data-zoom-alt="Ace 정합성 검증 시퀀스 다이어그램 크게 보기">
-                        <img src="../assets/images/Ace_정합성검증_시퀀스다이어그램.png" alt="Ace 정합성 검증 시퀀스 다이어그램">
-                    </button>
-                    <figcaption>정합성 검증 시퀀스다이어그램</figcaption>
-                </figure>
-            </section>
-
-            <div class="project-divider reflection-divider" aria-hidden="true"></div>
-
-            <section class="verification-overview">
-                <div class="runner-content">
-                    <h2>검증 실행 공통 인터페이스</h2>
-                    <p class="runner-highlight">검증을 실행하는 곳에서는 Runner에 다음 3가지 인자만 전달하면 검증을 실행할 수 있는 구조로 구현</p>
-                    <figure class="project-figure runner-figure">
-                        <button type="button" class="image-zoom" data-zoom-src="../assets/images/Ace_runner_run.png" data-zoom-alt="ConsistencyVerificationRunner 실행 코드 크게 보기">
-                            <img src="../assets/images/Ace_runner_run.png" alt="ConsistencyVerificationRunner 실행 코드">
-                        </button>
-                    </figure>
-                    <dl class="parameter-list">
-                        <div><dt><code>checks</code></dt><dd>실제로 검증할 정합성 검증 객체<br>ex) Stock, Structural, StateMachine...</dd></div>
-                        <div><dt><code>scope</code></dt><dd>검증을 실행할 범위를 결정하는 매개변수<br>ex) 특정 쿠폰 이벤트, 시간 구간, 전체</dd></div>
-                        <div><dt><code>triggerType</code></dt><dd>검증 실행 방식을 결정하는 매개변수<br>ex) 스케줄러, 수동 실행, 복구 후 재검증</dd></div>
-                    </dl>
-                </div>
-            </section>
-
-            <div class="project-divider implementation-divider" aria-hidden="true"></div>
-
-            <section class="batch-section">
-                <h2>Spring Batch 기반 비동기 검증</h2>
-                <ul class="batch-rules">
-                    <li>ALL 스코프는 한 번에 수백만 건을 검사하므로 시간이 많이 소요<br>
-                        요청과 검증 실행을 분리하고 <code>Spring Batch</code> Job으로 처리하도록 구현</li>
-                    <li>
-                        <span>마찬가지로 <code>ConsistencyVerificationRunner</code>를 통해 인자만 건네면 쉽게 실행</span>
-                        <figure class="project-figure batch-run-figure">
-                            <button type="button" class="image-zoom" data-zoom-src="../assets/images/Ace_ruuner_runAsync.png" data-zoom-alt="비동기 정합성 검증 실행 코드 크게 보기">
-                                <img src="../assets/images/Ace_ruuner_runAsync.png" alt="비동기 정합성 검증 실행 코드">
-                            </button>
-                        </figure>
                     </li>
-                    <li><code>ConsistencyBatchJobFactory</code>가 요청받은 검증 1개당 Step 1개씩 동적으로 조립해 Job을 구성</li>
                 </ul>
+            </section>
 
-                <div class="project-divider reflection-divider" aria-hidden="true"></div>
+            <section class="ubot-section">
+                <h2>해결 과정</h2>
+                <ul class="ubot-list">
+                    <li><strong>위반 건수가 많아지면 검증 결과 저장이 통째로 실패하는 문제</strong>
+                        <ul class="ubot-sublist">
+                            <li><strong>원인</strong>
+                                <ul class="ubot-sublist">
+                                    <li><code>VerificationResult</code>(검증 결과 저장 테이블)의 <code>diff_detail</code>(위반 내역 컬럼) 안에 위반 내역 메타데이터를 모두 저장</li>
+                                    <li>위반 건수가 많아지면 컬럼 데이터가 커질 수 있음을 사전에 인지했지만, 대량 위반은 발생하지 않을 것이라 판단해 기존 구조를 유지</li>
+                                    <li>MySQL 조회 과정에서 시계 오차로 인한 1만 건의 위반이 발생. <code>diff_detail</code>안의 대량의 데이터가 정렬 대상에 포함되어 정렬 메모리가 부족해짐</li>
+                                </ul>
+                            </li>
+                            <li><strong>해결</strong>
+                                <ul class="ubot-sublist">
+                                    <li>위반 사항을 별도의 <code>verification_violation</code> 테이블에 저장. 위반 1건을 행 1개로 분리</li>
+                                    <li><code>diff_detail</code>은 각 검증이 필요한 개별 메타데이터만 저장하도록 역할을 축소</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
 
-                <h3 class="step-components-title">Step 구성 요소</h3>
-                <div class="step-components">
-                    <article>
-                        <h4><span>01</span>EventIdPageReader</h4>
-                        <ul>
-                            <li><code>event_id</code> 기준 keyset pagination으로 <code>coupon_event</code>를 10개씩 조회</li>
-                            <li><code>ItemStream</code>으로 마지막 <code>event_id</code>를 저장해, 비정상 종료 후 재시작 시 해당 지점부터 이어서 읽음</li>
-                        </ul>
-                    </article>
-                    <article>
-                        <h4><span>02</span>ConsistencyCheckItemProcessor</h4>
-                        <ul>
-                            <li>Reader가 읽은 페이지(<code>coupon_event</code> 10개)로 해당 Step의 검증을 실행</li>
-                            <li>실행 도중 오류가 발생하면 커밋된 페이지 이후부터 재실행</li>
-                        </ul>
-                    </article>
-                    <article>
-                        <h4><span>03</span>CheckResultAccumulatorWriter</h4>
-                        <ul>
-                            <li>페이지별 위반 건을 즉시 저장, 위반 건수는 Step 종료까지 누적</li>
-                            <li><code>ItemStream</code>으로 누적 위반 건수도 보존해 재시작 후에도 이전 집계 유지</li>
-                            <li>Step 종료 시 <code>StepCompletionListener</code>가 <code>VerificationResult</code>를 최종 저장</li>
-                        </ul>
-                    </article>
-                </div>
+            <section class="ubot-section">
+                <h2>결과</h2>
+                <ul class="ubot-list">
+                    <li>위반 건수가 늘어나더라도 검증 결과 저장이 실패하지 않음</li>
+                    <li>유형, 대상별 위반 사항 조회가 가능해짐</li>
+                </ul>
             </section>
 
             <footer class="page-footer">
                 <span>8</span>
             </footer>
         </article>
-
-        <article class="pdf-page recovery-page">
-            <header class="project-page-header implementation-page-header">
-                <div>
-                    <p class="eyebrow">PROJECT</p>
-                    <h1>Ace</h1>
-                    <p class="project-subtitle">선착순 쿠폰 발급 시스템</p>
-                </div>
-            </header>
-
-            <section class="recovery-hero">
-                <div class="recovery-hero-copy">
-                    <div class="implementation-title">
-                        <p class="implementation-kicker">주요 구현 내용</p>
-                        <h2>정합성 검증 복구 정책</h2>
-                        <p class="implementation-subtitle">복구 실행부터 이력 저장 · 재검증까지의 공통 파이프라인</p>
-                    </div>
-                    <div class="implementation-intro">
-                        <ul class="common-context-list">
-                            <li>정합성 검증마다 위반 규칙과 복구 방식은 상이<br>하지만 복구를 실행하고 결과를 관리하는 흐름은 공통으로 필요</li>
-                            <li>복구 정책 파이프라인은 일관되게 실행<br>검증별 실제 복구 로직은 각 팀원이 <code>ConsistencyRecoveryPolicy</code>로 구현</li>
-                            <li>복구 정책 실행 · 복구 이력 저장 · 성공 시 재검증 · <br><code>VerificationResult</code> 상태 갱신 흐름을 공통화</li>
-                        </ul>
-                    </div>
-                </div>
-                <figure class="project-figure recovery-flow-figure">
-                    <button type="button" class="image-zoom" data-zoom-src="../assets/images/Ace_복구정책_시퀀스다이어그램.png" data-zoom-alt="Ace 정합성 검증 복구 정책 시퀀스 다이어그램 크게 보기">
-                        <img src="../assets/images/Ace_복구정책_시퀀스다이어그램.png" alt="Ace 정합성 검증 복구 정책 시퀀스 다이어그램">
-                    </button>
-                    <figcaption>정합성 검증 복구 정책 시퀀스다이어그램</figcaption>
-                </figure>
-            </section>
-
-            <div class="project-divider reflection-divider" aria-hidden="true"></div>
-
-            <section class="recovery-interface">
-                <h2>복구 실행 공통 인터페이스</h2>
-                <p class="recovery-highlight">트리거 종류(관리자 실행, 자동 실행)에 상관없이 <code>ConsistencyRecoveryDispatcher.recover()</code> 하나를 거쳐 복구하도록 구현</p>
-                <figure class="project-figure recovery-dispatcher-figure">
-                    <button type="button" class="image-zoom" data-zoom-src="../assets/images/Ace_dispatcher_recover.png" data-zoom-alt="ConsistencyRecoveryDispatcher 복구 실행 코드 크게 보기">
-                        <img src="../assets/images/Ace_dispatcher_recover.png" alt="ConsistencyRecoveryDispatcher 복구 실행 코드">
-                    </button>
-                </figure>
-                <dl class="recovery-parameters">
-                    <div><dt><code>resultId</code></dt><dd>복구 대상인 FAIL 상태의 정합성 검증 결과<br>FAIL 상태가 아니면 즉시 예외로 거부</dd></div>
-                    <div><dt><code>action</code></dt><dd>관리자가 선택한 복구 방식(<code>RecoveryAction</code>)<br>검증별 정책에 맞는 실제 복구 로직을 선택</dd></div>
-                </dl>
-            </section>
-
-            <div class="project-divider recovery-divider" aria-hidden="true"></div>
-
-            <section class="recovery-outcome-section">
-                <h2>복구 진행 과정</h2>
-                <div class="recovery-outcome-grid">
-                    <article>
-                        <h3><span>01</span>정책 실행</h3>
-                        <ul>
-                            <li>위반 <code>VerificationResult</code>의 <code>checkName</code>으로 수행한 검증 식별</li>
-                            <li>하나의 검증에서 여러 <code>coupon_event</code>가 개별적으로 위반될 수 있음</li>
-                            <li>해당 검증의 복구 정책을 찾아 각 위반 건에 대한 복구 수행</li>
-                            <li>건별 복구 결과를 <code>List&lt;RecoveryOutcome&gt;</code>로 반환</li>
-                        </ul>
-                    </article>
-                    <article>
-                        <h3><span>02</span>이력 저장</h3>
-                        <ul>
-                            <li><code>ConsistencyRecoveryDispatcher</code>가 <code>List&lt;RecoveryOutcome&gt;</code>를 순회</li>
-                            <li>각 <code>RecoveryOutcome</code>의 복구 성공·실패 여부와 관계없이 모든 복구 시도를 <code>recovery_result</code> 테이블에 저장</li>
-                            <li>건별 <code>REQUIRES_NEW</code> 트랜잭션으로 결과를 즉시 커밋해 이력을 보존</li>
-                        </ul>
-                    </article>
-                    <article>
-                        <h3><span>03</span>재검증 및 상태 갱신</h3>
-                        <ul>
-                            <li>복구 성공 시 동일한 검증을 자동으로 다시 실행</li>
-                            <li>재검증까지 통과한 경우에만 최종 복구 성공으로 인정하고 상태를 갱신</li>
-                        </ul>
-                    </article>
-                </div>
-            </section>
-
-            <footer class="page-footer">
-                <span>9</span>
-            </footer>
-        </article>
-
-        <article class="pdf-page reflection-page">
-            <header class="project-page-header implementation-page-header">
-                <div>
-                    <p class="eyebrow">PROJECT</p>
-                    <h1>Ace</h1>
-                    <p class="project-subtitle">선착순 쿠폰 발급 시스템</p>
-                </div>
-            </header>
-
-            <section class="reflection-title">
-                <p class="implementation-kicker">고찰 · 개발 이슈</p>
-                <h2>위반 건수가 많아지면 검증 결과 저장이 통째로 실패</h2>
-                <p class="implementation-subtitle">대량의 위반 데이터를 하나의 컬럼에 저장하며 발생한 MySQL 정렬 메모리 오류</p>
-            </section>
-
-            <section class="reflection-problem">
-                <div>
-                    <h2>문제 상황</h2>
-                    <ul class="reflection-list">
-                        <li><code>VerificationResult</code>의 <code>diff_detail</code> 컬럼 안에 위반 내역 메타데이터를 <br>하나의 <code>sample</code> 키로 저장</li>
-                        <li>위반 건수가 많아지면 컬럼 데이터가 커질 수 있음을 사전에 인지<br>하지만 대량 위반은 발생하지 않을 것이라 판단, 기존 구조를 유지</li>
-                        <li>테스트 중 Redis와 로컬 환경의 시계가 어긋나면서 정상 데이터가 대량 위반으로 판정되어, 위반 1만 건이 한 번에 쌓이는 상황 발생</li>
-                        <li>MySQL 조회 과정에서 대용량 <code>diff_detail</code> 값이 정렬 대상에 포함<br>정렬 메모리가 부족해져 <code>Out of sort memory</code> 오류 발생</li>
-                    </ul>
-                </div>
-                <figure class="project-figure reflection-figure">
-                    <button type="button" class="image-zoom" data-zoom-src="../assets/images/Ace_재고정합성_diffDetail.png" data-zoom-alt="기존 재고 정합성 diff detail 구조 크게 보기">
-                        <img src="../assets/images/Ace_재고정합성_diffDetail.png" alt="기존 재고 정합성 diff detail 구조">
-                    </button>
-                    <figcaption>기존 <code>diff_detail</code> 저장 구조</figcaption>
-                </figure>
-            </section>
-
-            <div class="project-divider reflection-divider" aria-hidden="true"></div>
-
-            <section class="reflection-solution">
-                <div>
-                    <h2>해결</h2>
-                    <ul class="reflection-list reflection-solution-list">
-                        <li>위반 사항을 <code>verification_violation</code> 테이블에 저장<br> 위반 1건을 행 1개로 분리</li>
-                        <li><code>diff_detail</code>은 각 검증이 필요한 개별 메타데이터만 저장하도록 역할을 축소</li>
-                        <li>위반 건수가 늘어나더라도 검증 결과 저장이 실패하지 않도록 개선<br> 유형·대상별 조회 및 복구 정책 연결이 가능해짐</li>
-                    </ul>
-                </div>
-                <figure class="project-figure reflection-figure2">
-                    <button type="button" class="image-zoom" data-zoom-src="../assets/images/Ace_개선후_verificationResult.png" data-zoom-alt="개선된 VerificationResult 구조 크게 보기">
-                        <img src="../assets/images/Ace_개선후_verificationResult.png" alt="개선된 VerificationResult 구조">
-                    </button>
-                    <figcaption>개선된 위반 데이터 저장 구조</figcaption>
-                </figure>
-            </section>
-
-            <div class="project-divider reflection-divider" aria-hidden="true"></div>
-
-            <section class="reflection-learned">
-                <h2>배운 점</h2>
-                <ul class="reflection-list">
-                    <li>문제 가능성을 인지했지만, 발생 가능성이 낮다고 판단해 구조 개선을 후순위로 미룸</li>
-                    <li>가장 큰 문제는 실제 이슈 발생 시 어떤 영향으로 이어질지 충분히 검토하지 않았다는 점</li>
-                    <li>당시 MySQL에 대한 이해가 부족해, 정렬 과정에서 큰 컬럼으로 인해 오류가 발생할 수 있다는 점을 고려하지 못함</li>
-                    <li>이슈의 발생 가능성뿐 아니라 발생 시 영향까지 확인한 후, 문제의 크기를 판단해 구조 변경 여부를 논의하는 것이 중요함을 깨달음</li>
-                </ul>
-            </section>
-
-            <footer class="page-footer">
-                <span>10</span>
-            </footer>
-        </article>
-
-
     </main>
 
     <div id="pdf-image-modal" class="pdf-image-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="이미지 크게 보기">
