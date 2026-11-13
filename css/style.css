@@ -1897,3 +1897,103 @@ dd {
 .ubot-page .ubot-arrow {
     font-weight: 700;
 }
+
+.ubot-page .ubot-crumb {
+    margin: 0 0 1mm;
+    color: var(--muted);
+    font-size: 8pt;
+    font-weight: 600;
+}
+
+.ubot-page .ubot-subtitle-sm {
+    font-size: 9pt;
+}
+
+.ubot-figure--small img {
+    max-height: 80mm;
+}
+
+.ubot-page .ubot-sublist .ubot-list {
+    gap: 0;
+    margin-top: 0;
+}
+
+.ubot-page .ubot-sublist .ubot-list > li {
+    line-height: 1.55;
+}
+
+.ubot-page .ubot-section {
+    margin-bottom: 3mm;
+}
+
+.ubot-page .ubot-list {
+    gap: 1.2mm;
+}
+
+/* 번호와 문장의 세로 위치를 맞추기 위해 번호의 줄 높이를 문장과 동일하게 지정 */
+.ubot-page .ubot-list:not(.ubot-definition) > li::before {
+    line-height: 14.96pt;
+}
+
+.ubot-page .ubot-sublist .ubot-list > li::before {
+    line-height: 13.64pt;
+}
+
+.ubot-page .goal-list > li::before {
+    line-height: 15.64pt;
+}
+
+/* 2페이지(UBot 소개) 문장 사이 간격 축소 */
+.ubot-page .goal-list {
+    gap: 2mm;
+}
+
+.ubot-page .project-goal,
+.ubot-page .project-summary {
+    margin-bottom: 3mm;
+}
+
+.ubot-page .ubot-skill-section {
+    margin-top: 2mm;
+}
+
+.ubot-page .goal-list {
+    gap: 0;
+}
+
+.ubot-page .goal-list > li {
+    line-height: 1.55;
+}
+
+.ubot-contrib {
+    gap: 0.4mm;
+}
+
+.ubot-contrib li {
+    line-height: 1.55;
+}
+
+.ubot-page .contribution-section {
+    margin: 4mm 0;
+}
+
+/* UBot 소개 페이지: 기술 스택을 헤더 아래 별도 줄로 분리, 기간/인원은 줄바꿈 없이 표시 */
+.ubot-page .project-header-meta p {
+    white-space: nowrap;
+}
+
+.ubot-page > .tech-tags {
+    margin-bottom: 4mm;
+}
+
+.ubot-main-figure img {
+    max-height: none;
+}
+
+.ubot-page .project-hero {
+    padding: 0;
+}
+
+.ubot-page .project-summary > p {
+    margin-bottom: 0;
+}
