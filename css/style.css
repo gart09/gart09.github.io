@@ -150,6 +150,14 @@ h1 {
     padding-top: 0;
 }
 
+.activity-section {
+    grid-column: 1 / -1;
+}
+
+.profile-column {
+    min-width: 0;
+}
+
 .section-divider {
     grid-column: 1 / -1;
     height: 1px;
@@ -252,12 +260,36 @@ dd {
     font-size: 8.5pt;
 }
 
+.bootcamp-desc {
+    color: var(--muted);
+    font-size: 9.5pt;
+}
+
 .career-sublist {
     display: grid;
     gap: 0.8mm;
     margin-top: 0.8mm;
     color: var(--muted);
     font-size: 7.4pt;
+}
+
+.project-sublist {
+    display: grid;
+    gap: 1.5mm;
+    margin-top: 1.5mm;
+    color: var(--muted);
+    font-size: 8.5pt;
+}
+
+.project-sublist b {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.project-sublist ul {
+    margin: 0.4mm 0 0;
+    padding-left: 3.5mm;
+    list-style: disc;
 }
 
 .career-sublist span {
